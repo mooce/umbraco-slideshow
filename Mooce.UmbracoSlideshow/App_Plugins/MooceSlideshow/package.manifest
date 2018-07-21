@@ -1,0 +1,16 @@
+{   
+    propertyEditors: [      
+        {
+            alias: "Mooce.Slideshow",
+            name: "Slideshow",
+            editor: {
+                view: "~/App_Plugins/MooceSlideshow/slideshow.view.html"
+            }
+        }
+    ]
+    ,
+    javascript: [
+        '~/App_Plugins/MooceSlideshow/slideshow.service.js',
+        '~/App_Plugins/MooceSlideshow/slideshow.controller.js',
+    ]
+}
