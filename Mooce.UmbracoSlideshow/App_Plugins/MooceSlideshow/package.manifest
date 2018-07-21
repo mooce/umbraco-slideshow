@@ -4,7 +4,19 @@
             alias: "Mooce.Slideshow",
             name: "Slideshow",
             editor: {
-                view: "~/App_Plugins/MooceSlideshow/slideshow.view.html"
+                view: "~/App_Plugins/MooceSlideshow/slideshow.view.html",
+                hideLabel: true,
+                valueType : "JSON"
+            },
+            prevalues: {
+                fields: [
+                    {
+                        label: "Max Slides",
+                        description: "Maximum number of slides",
+                        key: "slidesMax",
+                        view: "number"
+                    }
+                ]
             }
         }
     ]
