@@ -1,32 +1,31 @@
 <div ng-controller="Mooce.Slideshow">
-    <div>
-        <label>Heading</label>
-        <input ng-model="current.heading" />
-    </div>
-    <div>
-        <label>Caption</label>
-        <textarea ng-model="current.caption"></textarea>
-    </div>
+    <div ng-if="toggledSlide">
+        <div>
+            <label>Heading</label>
+            <input ng-model="toggledSlide.heading" />
+        </div>
+        <div>
+            <label>Caption</label>
+            <textarea ng-model="toggledSlide.caption"></textarea>
+        </div>
 
-    <div>
-        <label>Background Image</label>
-        <img src="{{ current.backgroundUrl }}" />
-        <button ng-click="pickPhoto($event, current)">Pick photo</button>
-    </div>
+        <div>
+            <label>Background Image</label>
+            <img src="{{ toggledSlide.backgroundUrl }}" />
+            <button ng-click="pickPhoto($event, toggledSlide)">Pick photo</button>
+        </div>
 
-    <div>
-        <label>Link</label>
-        <button ng-click="pickLink($event, current)">Pick link</button>
+        <div>
+            <label>Link</label>
+            <button ng-click="pickLink($event, toggledSlide)">Pick link</button>
+        </div>
     </div>
-
-    <button>Save Changes</button>
-    <button>Cancel</button>
 
     <hr>
 
     <ul ng-repeat="slide in getAllSlides()">
-        <li  ng-click="selectSlide(slide)" ng-style="{ background : isSelected(slide) ? 'red' : '' }">
-            <p>Slide {{ slide.index }}</p>
+        <li  ng-click="toggleSlide(slide)" ng-style="{ background : isToggled(slide) ? 'red' : '' }">
+            <p>{{ slide.heading }}</p>
             <button ng-click="deleteSlide($event, slide)">Delete Slide</button>
         </li>
     </ul>

@@ -9,24 +9,25 @@ angular.module("umbraco")
             slides : []
         })
 
-        $scope.current = null;
+        $scope.toggledSlide = null;
 
         $scope.getAllSlides = function() {
 
             return $scope.model.value.slides
         }
 
-        $scope.isSelected = function(slide) {
-            return $scope.current === slide
+        $scope.isToggled = function(slide) {
+            return $scope.toggledSlide === slide
         }
 
-        $scope.selectSlide = function(slide) {
-            return $scope.current = slide
-        }
+        $scope.toggleSlide = function(slide) {
 
-        $scope.getCurrentSlide = function() {
-
-            return $scope.current
+            if($scope.toggledSlide === slide) {
+                $scope.toggledSlide = null
+            }
+            else {
+                $scope.toggledSlide = slide
+            }
         }
 
         $scope.deleteSlide = function($event, slide) {
@@ -44,10 +45,13 @@ angular.module("umbraco")
 
         $scope.addSlide = function($event) {
             $event.preventDefault();
+
+            var index = $scope.model.value.slides.length
+
             $scope.model.value.slides.push({
-                index : $scope.model.value.slides.length,
+                index : index,
                 backgroundUrl:'',
-                heading:'',
+                heading:'Slide ' + index,
                 caption:'',
                 link:''
             })
@@ -58,7 +62,7 @@ angular.module("umbraco")
             $event.preventDefault();
             dialogService.mediaPicker({ onlyImages : true, callback : function(media) {
 
-                $scope.current.backgroundUrl = media.image
+                $scope.toggledSlide.backgroundUrl = media.image
             }})
         } 
 
@@ -68,7 +72,7 @@ angular.module("umbraco")
             dialogService.linkPicker({ onlyImages : true, callback : function(item) {
 
                 debugger
-                $scope.current.link = item.url
+                $scope.toggledSlide.link = item.url
             }})
         }         
     }]);
