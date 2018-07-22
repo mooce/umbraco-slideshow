@@ -4,16 +4,19 @@ angular.module("umbraco")
         
         // assetsService.loadCss("/App_Plugins/styles.css");
 
-        $scope.model.value = Object.assign($scope.model.value, {
+        // debugger
+        // $scope.model.value = '{ slides : [] }'
+
+        $scope.model = {
             slideDuration : 1000,
             slides : []
-        })
+        }
 
         $scope.toggledSlide = null;
 
         $scope.getAllSlides = function() {
 
-            return $scope.model.value.slides
+            return $scope.model.slides
         }
 
         $scope.isToggled = function(slide) {
@@ -33,22 +36,24 @@ angular.module("umbraco")
         $scope.deleteSlide = function($event, slide) {
             $event.preventDefault();
 
-            var value = $scope.model.value;
-            var index = value.slides.indexOf(slide);
+            var model = $scope.model;
+            var index = model.slides.indexOf(slide);
 
             if(index !== -1) {
-                value.slides.splice(index, 1)
+                model.slides.splice(index, 1)
             }
 
-
+            if($scope.toggledSlide === slide) {
+                $scope.toggledSlide = null
+            }
         }
 
         $scope.addSlide = function($event) {
             $event.preventDefault();
 
-            var index = $scope.model.value.slides.length
+            var index = $scope.model.slides.length
 
-            $scope.model.value.slides.push({
+            $scope.model.slides.push({
                 index : index,
                 backgroundUrl:'',
                 heading:'Slide ' + index,
@@ -71,7 +76,6 @@ angular.module("umbraco")
             $event.preventDefault();
             dialogService.linkPicker({ onlyImages : true, callback : function(item) {
 
-                debugger
                 $scope.toggledSlide.link = item.url
             }})
         }         
