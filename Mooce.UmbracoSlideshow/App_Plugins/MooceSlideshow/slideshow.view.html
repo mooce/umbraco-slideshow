@@ -23,10 +23,12 @@
     <button>Cancel</button>
 
     <hr>
-    
+
     <ul ng-repeat="slide in getAllSlides()">
-        <li>Slide {{ slide.index }}</li>
-        <button ng-click="deleteSlide($event, slide)">Delete Slide</button>
+        <li  ng-click="selectSlide(slide)" ng-style="{ background : isSelected(slide) ? 'red' : '' }">
+            <p>Slide {{ slide.index }}</p>
+            <button ng-click="deleteSlide($event, slide)">Delete Slide</button>
+        </li>
     </ul>
     <button ng-click="addSlide($event)">Add Slide</button>
 </div>

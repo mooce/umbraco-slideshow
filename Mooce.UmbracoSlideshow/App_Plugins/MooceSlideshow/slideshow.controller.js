@@ -9,19 +9,19 @@ angular.module("umbraco")
             slides : []
         })
 
-
-
-        $scope.current = {
-            index : 0,
-            backgroundUrl:'',
-            heading:'',
-            caption:'',
-            link:''
-        }
+        $scope.current = null;
 
         $scope.getAllSlides = function() {
 
             return $scope.model.value.slides
+        }
+
+        $scope.isSelected = function(slide) {
+            return $scope.current === slide
+        }
+
+        $scope.selectSlide = function(slide) {
+            return $scope.current = slide
         }
 
         $scope.getCurrentSlide = function() {
