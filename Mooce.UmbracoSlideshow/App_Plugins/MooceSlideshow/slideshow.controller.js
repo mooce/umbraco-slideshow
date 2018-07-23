@@ -2,21 +2,18 @@ angular.module("umbraco")
     .controller("Mooce.Slideshow",
     ['$scope', '$http', 'assetsService', 'dialogService', function ($scope, $http, assetsService, dialogService) {
         
-        // assetsService.loadCss("/App_Plugins/styles.css");
-
-        // debugger
-        // $scope.model.value = '{ slides : [] }'
-
-        $scope.model = {
-            slideDuration : 1000,
-            slides : []
-        }
-
+        assetsService.loadCss("https://cdn.materialdesignicons.com/2.5.94/css/materialdesignicons.min.css");
+        assetsService.loadCss("/App_Plugins/MooceSlideshow/styles.css");
+        
+        $scope.model.value = angular.extend({}, { 
+            slides : [], slideDuration : 1000 
+        }, $scope.model.value)
+        
         $scope.toggledSlide = null;
 
         $scope.getAllSlides = function() {
 
-            return $scope.model.slides
+            return $scope.model.value.slides
         }
 
         $scope.isToggled = function(slide) {
@@ -36,11 +33,11 @@ angular.module("umbraco")
         $scope.deleteSlide = function($event, slide) {
             $event.preventDefault();
 
-            var model = $scope.model;
-            var index = model.slides.indexOf(slide);
+            var value = $scope.model.value;
+            var index = value.slides.indexOf(slide);
 
             if(index !== -1) {
-                model.slides.splice(index, 1)
+                value.slides.splice(index, 1)
             }
 
             if($scope.toggledSlide === slide) {
@@ -51,9 +48,9 @@ angular.module("umbraco")
         $scope.addSlide = function($event) {
             $event.preventDefault();
 
-            var index = $scope.model.slides.length
+            var index = $scope.model.value.slides.length
 
-            $scope.model.slides.push({
+            $scope.model.value.slides.push({
                 index : index,
                 backgroundUrl:'',
                 heading:'Slide ' + index,
