@@ -1,4 +1,5 @@
 <div ng-controller="Mooce.Slideshow">
+    <!--
     <div ng-if="toggledSlide">
         <div>
             <label>Heading</label>
@@ -11,7 +12,7 @@
 
         <div>
             <label>Background Image</label>
-            <img src="{{ toggledSlide.backgroundUrl }}" />
+            <img src="{{ toggledSlide.backgroundUrl }}" width="250" />
             <button ng-click="pickPhoto($event, toggledSlide)">Pick photo</button>
         </div>
 
@@ -22,12 +23,19 @@
     </div>
 
     <hr>
+    -->
 
     <ul ng-repeat="slide in getAllSlides()">
-        <li  ng-click="toggleSlide(slide)" ng-style="{ background : isToggled(slide) ? 'red' : '' }">
+        <li ng-style="{ background : isToggled(slide) ? 'red' : '' }">
             <p>{{ slide.heading }}</p>
+            <img ng-if="slide.backgroundUrl" src="{{ slide.backgroundUrl }}" width="250" />
+            <button ng-click="pickPhoto($event, slide)">Pick photo</button>
             <button ng-click="deleteSlide($event, slide)">Delete Slide</button>
         </li>
     </ul>
     <button ng-click="addSlide($event)">Add Slide</button>
+    <div>
+        <label>Slide duration</label>
+        <input ng-model="slideDuration" ng-change="onChangeSlideDuration()" type="number" min="1" />
+    </div>
 </div>

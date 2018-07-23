@@ -6,10 +6,15 @@ angular.module("umbraco")
         assetsService.loadCss("/App_Plugins/MooceSlideshow/styles.css");
         
         $scope.model.value = angular.extend({}, { 
-            slides : [], slideDuration : 1000 
+            slides : [], slideDuration : 1
         }, $scope.model.value)
         
         $scope.toggledSlide = null;
+        $scope.slideDuration = $scope.model.value.slideDuration
+
+        $scope.onChangeSlideDuration = function() {
+            $scope.model.value.slideDuration = $scope.slideDuration
+        }
 
         $scope.getAllSlides = function() {
 
@@ -31,7 +36,11 @@ angular.module("umbraco")
         }
 
         $scope.deleteSlide = function($event, slide) {
+            
             $event.preventDefault();
+
+            // Close all dialogs, incase some dialog is open for configuration of the slide being deleted
+            dialogService.closeAll();
 
             var value = $scope.model.value;
             var index = value.slides.indexOf(slide);
@@ -64,7 +73,7 @@ angular.module("umbraco")
             $event.preventDefault();
             dialogService.mediaPicker({ onlyImages : true, callback : function(media) {
 
-                $scope.toggledSlide.backgroundUrl = media.image
+                slide.backgroundUrl = media.image
             }})
         } 
 
@@ -73,7 +82,7 @@ angular.module("umbraco")
             $event.preventDefault();
             dialogService.linkPicker({ onlyImages : true, callback : function(item) {
 
-                $scope.toggledSlide.link = item.url
+                slide.link = item.url
             }})
         }         
     }]);
