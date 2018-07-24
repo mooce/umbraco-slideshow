@@ -1,10 +1,9 @@
-<div ng-controller="Mooce.Slideshow">
+<div class="mooce-slideshow" ng-controller="Mooce.Slideshow">
     <ul ng-repeat="slide in getAllSlides()">
-        <li ng-style="{ background : isToggled(slide) ? 'red' : '' }">
-            <p>{{ slide.heading }}</p>
-            <div>
-                <label>Heading</label>
+        <li ng-style="{ background : isToggled(slide) ? 'red' : '' }"> 
+            <div class="mooce-editable-field">
                 <input ng-model="slide.heading" />
+                <i class="mdi mdi-pencil"></i>
             </div>
             <div>
                 <label>Caption</label>

@@ -1,1 +1,48 @@
-/* empty */
+.mooce-slideshow {
+
+ ul {
+     list-style: none;
+     padding: 0;
+     margin:0;
+ }   
+
+ .mooce-editable-field {
+     display: inline-block;
+     position: relative;
+
+     input {
+        padding: 5px;
+        background: #f4f3f5;
+        position: relative;
+        border-color:transparent;
+        border-radius: 5px;
+        
+        &:hover {
+            background-color: darken( #f4f3f5, 5% );
+            cursor: pointer;
+        }
+
+        &:focus {
+            
+            background: inherit;
+            outline:1px solid #bbbabf;
+
+            &:hover {
+                cursor: unset;
+            }
+            + .mdi {
+                visibility: hidden;
+                pointer-events: none;
+            }
+        }
+
+     }
+     
+     .mdi { 
+         font-size: 1.25rem;
+         position: absolute;
+         top:7px;
+         right:8px;
+     }
+ }
+}
