@@ -1,33 +1,19 @@
 <div ng-controller="Mooce.Slideshow">
-    <!--
-    <div ng-if="toggledSlide">
-        <div>
-            <label>Heading</label>
-            <input ng-model="toggledSlide.heading" />
-        </div>
-        <div>
-            <label>Caption</label>
-            <textarea ng-model="toggledSlide.caption"></textarea>
-        </div>
-
-        <div>
-            <label>Background Image</label>
-            <img src="{{ toggledSlide.backgroundUrl }}" width="250" />
-            <button ng-click="pickPhoto($event, toggledSlide)">Pick photo</button>
-        </div>
-
-        <div>
-            <label>Link</label>
-            <button ng-click="pickLink($event, toggledSlide)">Pick link</button>
-        </div>
-    </div>
-
-    <hr>
-    -->
-
     <ul ng-repeat="slide in getAllSlides()">
         <li ng-style="{ background : isToggled(slide) ? 'red' : '' }">
             <p>{{ slide.heading }}</p>
+            <div>
+                <label>Heading</label>
+                <input ng-model="slide.heading" />
+            </div>
+            <div>
+                <label>Caption</label>
+                <input ng-model="slide.caption" />
+            </div>
+            <div>
+                <label>Link</label>
+                <button ng-click="pickLink($event, slide)">Pick link</button>
+            </div>
             <img ng-if="slide.backgroundUrl" src="{{ slide.backgroundUrl }}" width="250" />
             <button ng-click="pickPhoto($event, slide)">Pick photo</button>
             <button ng-click="deleteSlide($event, slide)">Delete Slide</button>
