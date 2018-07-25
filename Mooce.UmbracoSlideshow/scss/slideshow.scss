@@ -21,20 +21,36 @@ $spacing: 5px;
 
  .mooce-slide-image {
 
+    margin: 1rem;
     position: relative;
+    height: 12rem;
+    background: repeating-linear-gradient(45deg, #ffffff00, #ffffff00 5px, darken($color, 5%) 5px, darken($color, 5%) 10px);
 
     img {
-        width: 20rem - 2 * 1rem;
-        margin: 1rem auto;
+        width: 100%;
+        height: 100%;
         display: block;
-        height:10rem;
         object-fit: cover;
+    }
+
+    .mooce-center {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-left: -2.5rem;
+        margin-top: -2.5rem;
+        border-radius: 50%;
+        width: 5rem;
+        height: 5rem;
+        font-size: 2.5rem;
+        color: #fff;
+        background: #35c786;
     }
 
     .mooce-actions {
         position: absolute;
         bottom: 0rem;
-        left: 1rem;
+        left: 0rem;
         padding:0.5rem;
 
         .btn {
@@ -47,7 +63,9 @@ $spacing: 5px;
 }
 
  .mooce-editable-field {
-     display: inline-block;
+     margin: 10px;
+     margin-bottom: 0;
+     display: block;
      position: relative;
 
      input {
@@ -56,6 +74,9 @@ $spacing: 5px;
         position: relative;
         border-color:transparent;
         border-radius: 5px;
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
         
         &:hover {
             background-color: darken( #f4f3f5, 5% );
@@ -64,7 +85,7 @@ $spacing: 5px;
 
         &:focus {
             
-            background: inherit;
+        background: #fff;
             outline:1px solid #bbbabf;
 
             &:hover {

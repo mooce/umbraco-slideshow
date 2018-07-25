@@ -77,6 +77,12 @@ angular.module("umbraco")
             }})
         } 
 
+        $scope.clearPhoto = function($event, slide) {
+
+            $event.preventDefault();
+            slide.backgroundUrl = ''
+        } 
+
         $scope.pickLink = function($event, slide) {
 
             $event.preventDefault();

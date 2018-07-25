@@ -3,14 +3,17 @@
         <li class="mooce-slide" ng-repeat="slide in getAllSlides()"> 
             <div class="mooce-slide-image">
                 <img ng-if="slide.backgroundUrl" src="{{ slide.backgroundUrl }}" />
-                <span class="mooce-actions">
-                    <button class="btn replace" ng-click="pickPhoto($event, slide)">
+                <span class="mooce-actions" ng-if="slide.backgroundUrl">
+                    <button class="btn" ng-click="pickPhoto($event, slide)">
                         <i class="mdi mdi-pencil"></i>
                     </button>
-                    <button class="btn clear" ng-click="pickPhoto($event, slide)">
+                    <button class="btn" ng-click="clearPhoto($event, slide)">
                         <i class="mdi mdi-delete"></i>
                     </button>
                 </span>
+                <button class="btn mooce-center" ng-if="!slide.backgroundUrl" ng-click="pickPhoto($event, slide)">
+                    <i class="mdi mdi-pencil"></i>
+                </button>
             </div>
             <div>
                 <div class="mooce-editable-field">
