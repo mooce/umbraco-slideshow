@@ -1,6 +1,17 @@
 <div class="mooce-slideshow" ng-controller="Mooce.Slideshow">
-    <ul class="clearfix">
-        <li ng-repeat="slide in getAllSlides()"> 
+    <ul>
+        <li class="mooce-slide" ng-repeat="slide in getAllSlides()"> 
+            <div class="mooce-slide-image">
+                <img ng-if="slide.backgroundUrl" src="{{ slide.backgroundUrl }}" />
+                <span class="mooce-actions">
+                    <button class="btn replace" ng-click="pickPhoto($event, slide)">
+                        <i class="mdi mdi-pencil"></i>
+                    </button>
+                    <button class="btn clear" ng-click="pickPhoto($event, slide)">
+                        <i class="mdi mdi-delete"></i>
+                    </button>
+                </span>
+            </div>
             <div>
                 <div class="mooce-editable-field">
                     <input placeholder="Heading" ng-model="slide.heading" />
@@ -19,8 +30,6 @@
                     <button ng-click="pickLink($event, slide)">Pick link</button>
                 </div>
             </div>
-            <img ng-if="slide.backgroundUrl" src="{{ slide.backgroundUrl }}" width="250" />
-            <button ng-click="pickPhoto($event, slide)">Pick photo</button>
             <button ng-click="deleteSlide($event, slide)">Delete Slide</button>
         </li>
     </ul>
