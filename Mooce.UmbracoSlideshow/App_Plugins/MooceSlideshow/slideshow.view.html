@@ -1,6 +1,9 @@
 <div class="mooce-slideshow" ng-controller="Mooce.Slideshow">
     <ul>
         <li class="mooce-slide" ng-repeat="slide in getAllSlides()"> 
+            <button class="btn mooce-delete" ng-click="deleteSlide($event, slide)">
+                <i class="mdi mdi-window-close"></i>
+            </button>
             <div class="mooce-slide-image">
                 <img ng-if="slide.backgroundUrl" src="{{ slide.backgroundUrl }}" />
                 <span class="mooce-actions" ng-if="slide.backgroundUrl">
@@ -29,11 +32,10 @@
             </div>
             <div>
                 <div class="mooce-editable-field">
-                    <label>Link</label>
                     <button ng-click="pickLink($event, slide)">Pick link</button>
+                    <i class="mdi mdi-link"></i>
                 </div>
             </div>
-            <button ng-click="deleteSlide($event, slide)">Delete Slide</button>
         </li>
     </ul>
     <button ng-click="addSlide($event)">Add Slide</button>

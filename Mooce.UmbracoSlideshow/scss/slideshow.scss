@@ -13,10 +13,33 @@ $spacing: 5px;
 .mooce-slide {
     display: inline-block;
     vertical-align: text-bottom;
+    border-radius: 4px;
     background: $color;
     margin: 0 $spacing;
     width:20rem;
     height: 25rem;
+    position: relative;
+
+    &:hover {
+        .mooce-delete {
+            opacity: 1;
+        }    
+    }
+    
+    .mooce-delete {
+        opacity: 0;
+        z-index: 1;
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        width: 2rem;
+        height: 2rem;
+        padding: 0;
+        border-radius: 50%;
+        font-size: 1.25rem;
+        background: #e8014c;
+        color:#fff;
+    }
  }
 
  .mooce-slide-image {
