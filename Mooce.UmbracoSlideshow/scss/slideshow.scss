@@ -14,12 +14,26 @@ $spacing: 5px;
      max-width:100%;
  } 
  
+ .mooce-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -2.5rem;
+    margin-top: -2.5rem;
+    border-radius: 50%;
+    width: 5rem;
+    height: 5rem;
+    font-size: 2.5rem;
+    color: #333333;
+    background: $color-grey;
+}
+
 .mooce-slide {
     display: inline-block;
     vertical-align: text-bottom;
     border-radius: 4px;
     background: $color-grey;
-    margin: 0 $spacing;
+    margin: $spacing;
     width:20rem;
     height: 25rem;
     position: relative;
@@ -28,6 +42,25 @@ $spacing: 5px;
         .mooce-delete {
             opacity: 1;
         }    
+    }
+
+    &.mooce-new-slide {
+        background: $color-white;
+        outline: 4px dashed $color-grey;
+        cursor: pointer;
+
+        &:hover {
+            background-color: lighten( $color-grey, 2% ) ;
+        }
+
+        p {
+            text-align: center; 
+            position: absolute;
+            top: 50%;
+            margin-top: 5rem;
+            left: 0;
+            right: 0; 
+        }
     }
     
     .mooce-delete {
@@ -61,15 +94,6 @@ $spacing: 5px;
     }
 
     .mooce-center {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        margin-left: -2.5rem;
-        margin-top: -2.5rem;
-        border-radius: 50%;
-        width: 5rem;
-        height: 5rem;
-        font-size: 2.5rem;
         color: #fff;
         background: #35c786;
     }

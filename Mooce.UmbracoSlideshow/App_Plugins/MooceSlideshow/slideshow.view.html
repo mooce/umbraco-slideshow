@@ -1,5 +1,13 @@
 <div class="mooce-slideshow" ng-controller="Mooce.Slideshow">
     <ul>
+        <li class="mooce-slide mooce-new-slide" ng-click="addSlide($event)">
+            <button class="btn mooce-center">
+                <i class="mdi mdi-plus"></i>
+            </button>
+            <p>
+                Add a new slide
+            </p>
+        </li>
         <li class="mooce-slide" ng-repeat="slide in getAllSlides()"> 
             <button class="btn mooce-delete" ng-click="deleteSlide($event, slide)">
                 <i class="mdi mdi-window-close"></i>
@@ -38,7 +46,6 @@
             </div>
         </li>
     </ul>
-    <button ng-click="addSlide($event)">Add Slide</button>
     <div>
         <label>Slide duration</label>
         <input ng-model="slideDuration" ng-change="onChangeSlideDuration()" type="number" min="1" />
