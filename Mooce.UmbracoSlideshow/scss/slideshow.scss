@@ -1,4 +1,6 @@
-$color: #f4f3f5;
+$color-grey: #f4f3f5;
+$color-error: #e8014c;
+$color-white: #ffffff;
 $spacing: 5px;
 
 .mooce-slideshow {
@@ -8,13 +10,15 @@ $spacing: 5px;
      padding: 0;
      margin:0 -$spacing;
      white-space: nowrap; 
+     overflow-x:auto;
+     max-width:100%;
  } 
  
 .mooce-slide {
     display: inline-block;
     vertical-align: text-bottom;
     border-radius: 4px;
-    background: $color;
+    background: $color-grey;
     margin: 0 $spacing;
     width:20rem;
     height: 25rem;
@@ -37,8 +41,8 @@ $spacing: 5px;
         padding: 0;
         border-radius: 50%;
         font-size: 1.25rem;
-        background: #e8014c;
-        color:#fff;
+        background:$color-error;
+        color:$color-white;
     }
  }
 
@@ -47,7 +51,7 @@ $spacing: 5px;
     margin: 1rem;
     position: relative;
     height: 12rem;
-    background: repeating-linear-gradient(45deg, #ffffff00, #ffffff00 5px, darken($color, 5%) 5px, darken($color, 5%) 10px);
+    background: repeating-linear-gradient(45deg, #ffffff00, #ffffff00 5px, darken($color-grey, 5%) 5px, darken($color-grey, 5%) 10px);
 
     img {
         width: 100%;
@@ -91,7 +95,7 @@ $spacing: 5px;
      display: block;
      position: relative;
 
-     input {
+     textarea, input {
         padding: 5px;
         background: #f4f3f5;
         position: relative;
@@ -108,7 +112,7 @@ $spacing: 5px;
 
         &:focus {
             
-        background: #fff;
+            background: $color-white;
             outline:1px solid #bbbabf;
 
             &:hover {
