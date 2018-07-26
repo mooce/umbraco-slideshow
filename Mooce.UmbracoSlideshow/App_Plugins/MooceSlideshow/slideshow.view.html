@@ -39,9 +39,9 @@
                 </div>
             </div>
 
-            <div class="mooce-slide-link" ng-if="slide.link">
-                <a href="{{ slide.link }}">{{ slide.link }}</a>
-                <span class="mooce-actions">
+            <div class="mooce-slide-link">
+                <a href="{{ slide.link }}" ng-if="slide.link">{{ slide.link }}</a>
+                <span class="mooce-actions" ng-if="slide.link">
                     <button class="btn" ng-click="pickLink($event, slide)">
                         <i class="mdi mdi-pencil"></i>
                     </button>
@@ -49,9 +49,7 @@
                         <i class="mdi mdi-delete"></i>
                     </button>                    
                 </span>
-            </div>
-            <div ng-if="!slide.link">
-                <button class="btn" ng-click="pickLink($event, slide)">Pick link</button>
+                <button class="btn" ng-if="!slide.link" ng-click="pickLink($event, slide)">Pick link</button>
             </div>
         </li>
     </ul>

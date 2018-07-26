@@ -9,7 +9,10 @@ angular.module("umbraco")
             slides : [], slideDuration : 1
         }, $scope.model.value)
 
-        $scope.model.value.slides = [{ link : '///'}]
+        $scope.model.value.slides = [{ 
+            backgroundUrl:'http://localhost:7000/media/1003/18531852339_981b067419_h.jpg',
+            link : 'http://localhost:7000/media/1003/18531852339_981b067419_h.jpg'
+        }]
         
         $scope.toggledSlide = null;
         $scope.slideDuration = $scope.model.value.slideDuration
