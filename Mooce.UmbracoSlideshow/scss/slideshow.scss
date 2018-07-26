@@ -63,6 +63,11 @@ $spacing: 5px;
         }
     }
     
+    > div {
+        margin: 10px;
+        margin-bottom: 0;
+    }
+
     .mooce-delete {
         opacity: 0;
         z-index: 1;
@@ -114,8 +119,6 @@ $spacing: 5px;
 }
 
  .mooce-editable-field {
-     margin: 10px;
-     margin-bottom: 0;
      display: block;
      position: relative;
 
@@ -155,6 +158,18 @@ $spacing: 5px;
          position: absolute;
          top:7px;
          right:8px;
+     }
+ }
+
+ .mooce-slide-link {
+     width:100%;
+     padding-right: 5rem;
+     position: relative;
+     
+     .mooce-actions {
+         position: absolute;
+         right:0;
+         top: 0;
      }
  }
 }

@@ -8,6 +8,8 @@ angular.module("umbraco")
         $scope.model.value = angular.extend({}, { 
             slides : [], slideDuration : 1
         }, $scope.model.value)
+
+        $scope.model.value.slides = [{ link : '///'}]
         
         $scope.toggledSlide = null;
         $scope.slideDuration = $scope.model.value.slideDuration
@@ -90,5 +92,10 @@ angular.module("umbraco")
 
                 slide.link = item.url
             }})
-        }         
+        }   
+        
+        $scope.clearLink = function($event, slide) {
+
+            slide.link = ''
+        }      
     }]);
