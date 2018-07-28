@@ -51,6 +51,10 @@
                 </span>
                 <button class="btn" ng-if="!slide.link" ng-click="pickLink($event, slide)">Pick link</button>
             </div>
+            <div class="mooce-slide-order">
+                <button class="btn" ng-click="shift($event, slide, -1)">Left</button>
+                <button class="btn" ng-click="shift($event, slide, 1)">Right</button>
+            </div>
         </li>
     </ul>
     <div>

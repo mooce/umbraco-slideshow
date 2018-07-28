@@ -10,6 +10,13 @@ angular.module("umbraco")
         }, $scope.model.value)
 
         $scope.model.value.slides = [{ 
+            index : 1,
+            heading : 'a',
+            backgroundUrl:'http://localhost:7000/media/1005/18530280048_459b8b61b2_h.jpg',
+            link : 'http://localhost:7000/media/1003/18531852339_981b067419_h.jpg'
+        },{ 
+            index : 2,
+            heading : 'b',
             backgroundUrl:'http://localhost:7000/media/1003/18531852339_981b067419_h.jpg',
             link : 'http://localhost:7000/media/1003/18531852339_981b067419_h.jpg'
         }]
@@ -23,7 +30,9 @@ angular.module("umbraco")
 
         $scope.getAllSlides = function() {
 
-            return $scope.model.value.slides
+            var slides = $scope.model.value.slides
+
+            return slides
         }
 
         $scope.isToggled = function(slide) {
@@ -99,6 +108,34 @@ angular.module("umbraco")
         
         $scope.clearLink = function($event, slide) {
 
+            $event.preventDefault();
             slide.link = ''
-        }      
+        }    
+        
+        $scope.shift = function($event, slide, direction) {
+
+            $event.preventDefault();
+            
+            var slides = $scope.model.value.slides
+            var index = slides.indexOf(slide)
+
+            if(direction < 0) {
+
+                if(index > 0) {
+
+                    slides[ index - 1 ].index = index
+                    slides[ index ].index = index + 1
+                }
+            }
+            else {
+
+                if(index < slides.length - 1) {
+                    
+                    slides[ index + 1 ].index = index
+                    slides[ index ].index = index + 1
+                }
+            }
+
+            slides.sort(function(a, b) { return  a.index - b.index })
+        }
     }]);
