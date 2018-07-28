@@ -111,8 +111,20 @@ angular.module("umbraco")
             $event.preventDefault();
             slide.link = ''
         }    
+
+        $scope.sortEnabled = function(slide, direction) {
+            
+            var slides = $scope.model.value.slides
+            var index = slides.indexOf(slide)
+            if(direction < 0) {
+                return index > 0
+            }
+            else {
+                return index < slides.length - 1
+            }
+        }
         
-        $scope.shift = function($event, slide, direction) {
+        $scope.sortSlide = function($event, slide, direction) {
 
             $event.preventDefault();
             
@@ -124,7 +136,7 @@ angular.module("umbraco")
                 if(index > 0) {
 
                     slides[ index - 1 ].index = index
-                    slides[ index ].index = index + 1
+                    slides[ index ].index = index - 1
                 }
             }
             else {
