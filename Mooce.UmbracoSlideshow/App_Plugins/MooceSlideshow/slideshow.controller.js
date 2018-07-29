@@ -45,6 +45,13 @@ angular.module("umbraco")
             backgroundUrl:'http://localhost:7000/media/1003/18531852339_981b067419_h.jpg',
             link : 'http://localhost:7000/media/1003/18531852339_981b067419_h.jpg'
         }]
+
+        $scope.slide = { 
+            index : 2,
+            heading : 'b',
+            backgroundUrl:'http://localhost:7000/media/1003/18531852339_981b067419_h.jpg',
+            link : 'http://localhost:7000/media/1003/18531852339_981b067419_h.jpg'
+        }
         
         $scope.toggledSlide = null;
         $scope.slideDuration = $scope.model.value.slideDuration
