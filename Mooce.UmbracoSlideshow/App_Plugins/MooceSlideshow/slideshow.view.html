@@ -64,7 +64,7 @@
                 <span>Add slide</span>
             </button>
 
-            <small>
+            <small ng-if="getAllSlides().length > 0">
                 {{ getAllSlides().length }} slides total
             </small>
         </div>
