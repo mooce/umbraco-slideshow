@@ -48,6 +48,17 @@ $spacing: 5px;
         max-height: 25rem;
         overflow-y: auto;
         
+        .mooce-slides-menubar {
+
+            position: relative;
+
+            small {
+                position: absolute;
+                top:0.5rem;
+                right: 0.5rem;
+            }
+        }
+
         ul {
             list-style: none;
             padding: 0;

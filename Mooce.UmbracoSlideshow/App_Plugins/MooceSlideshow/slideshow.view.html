@@ -47,7 +47,7 @@
         </div>
     </div>
     <div class="mooce-slides">
-        <div>
+        <div class="mooce-slides-menubar">
             <button class="btn" ng-if="selection.length > 0" ng-click="selectClear($event)">
                 Clear <i class="mdi mdi-select-off"></i>
             </button>
@@ -63,6 +63,10 @@
                 <i class="mdi mdi-plus"></i>
                 <span>Add slide</span>
             </button>
+
+            <small>
+                {{ getAllSlides().length }} slides total
+            </small>
         </div>
         <ul>
             <li ng-repeat="slide in getAllSlides()" ng-class="{ 'mooce-selected' : slideIsToggled(slide) }" ng-click="slideToggle($event, slide)"> 
