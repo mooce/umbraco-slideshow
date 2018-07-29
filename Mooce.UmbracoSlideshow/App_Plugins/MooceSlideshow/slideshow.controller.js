@@ -66,6 +66,7 @@ angular.module("umbraco")
 
         $scope.selectToggle = function($event, slide) {
             $event.preventDefault();
+            $event.stopPropagation();
 
             if($scope.selectIsToggled(slide)) {
 
@@ -79,6 +80,43 @@ angular.module("umbraco")
         $scope.selectIsToggled = function(slide) {
 
             return $scope.selection.indexOf(slide) != -1
+        }
+
+        $scope.deleteSelected = function($event) {
+            
+            $event.preventDefault();
+
+            // Close all dialogs, incase some dialog is open for configuration of the slide being deleted
+            dialogService.closeAll();
+            
+            for(var i = 0; i < $scope.selection.length; i++) {
+                
+                var slide = $scope.selection[i];
+                var index = $scope.model.value.slides.indexOf(slide);
+
+                $scope.model.value.slides.splice(index, 1);
+
+                // If slide being deleted currently toggled, untoggle it
+                if(slide === $scope.slide) {
+                    $scope.slide = ''
+                }
+            }
+
+            $scope.selection = [];
+        }
+
+        $scope.slideAdd = function($event) {
+            $event.preventDefault();
+
+            var index = $scope.model.value.slides.length
+
+            $scope.model.value.slides.push({
+                index : index,
+                backgroundUrl:'',
+                heading:'Slide ' + index,
+                caption:'',
+                link:''
+            });
         }
 
         ////
@@ -123,39 +161,6 @@ angular.module("umbraco")
             else {
                 $scope.toggledSlide = slide
             }
-        }
-
-        $scope.deleteSlide = function($event, slide) {
-            
-            $event.preventDefault();
-
-            // Close all dialogs, incase some dialog is open for configuration of the slide being deleted
-            dialogService.closeAll();
-
-            var value = $scope.model.value;
-            var index = value.slides.indexOf(slide);
-
-            if(index !== -1) {
-                value.slides.splice(index, 1)
-            }
-
-            if($scope.toggledSlide === slide) {
-                $scope.toggledSlide = null
-            }
-        }
-
-        $scope.addSlide = function($event) {
-            $event.preventDefault();
-
-            var index = $scope.model.value.slides.length
-
-            $scope.model.value.slides.push({
-                index : index,
-                backgroundUrl:'',
-                heading:'Slide ' + index,
-                caption:'',
-                link:''
-            })
         }
 
         $scope.pickPhoto = function($event, slide) {
