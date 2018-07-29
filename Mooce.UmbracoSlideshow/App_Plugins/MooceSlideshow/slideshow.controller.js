@@ -109,14 +109,16 @@ angular.module("umbraco")
             $event.preventDefault();
 
             var index = $scope.model.value.slides.length
-
-            $scope.model.value.slides.push({
+            var slide = {
                 index : index,
                 backgroundUrl:'',
                 heading:'Slide ' + index,
                 caption:'',
                 link:''
-            });
+            };
+
+            $scope.model.value.slides.push(slide);
+            $scope.slide = slide;
         }
 
         ////
