@@ -60,7 +60,7 @@
             </button>
         </div>
         <ul>
-            <li ng-repeat="slide in getAllSlides()"> 
+            <li ng-repeat="slide in getAllSlides()" ng-class="{ 'mooce-selected' : slideIsToggled(slide) }" ng-click="slideToggle($event, slide)"> 
                 <input type="checkbox" ng-click="selectToggle($event, slide)" ng-checked="selectIsToggled(slide)" />
                 <h4>
                     {{ slide.heading }}

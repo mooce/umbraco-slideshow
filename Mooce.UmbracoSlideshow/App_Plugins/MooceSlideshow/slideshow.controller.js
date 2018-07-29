@@ -36,12 +36,12 @@ angular.module("umbraco")
             link : 'http://localhost:7000/media/1003/18531852339_981b067419_h.jpg'
         }]
 
-        $scope.slide = { 
+        $scope.slide = '' /*{ 
             index : 2,
             heading : 'b',
             backgroundUrl:'http://localhost:7000/media/1003/18531852339_981b067419_h.jpg',
             link : 'http://localhost:7000/media/1003/18531852339_981b067419_h.jpg'
-        }
+        }*/
         
         $scope.toggledSlide = null;
         $scope.slideDuration = $scope.model.value.slideDuration
@@ -67,13 +67,38 @@ angular.module("umbraco")
         $scope.selectToggle = function($event, slide) {
             $event.preventDefault();
 
-            $scope.selection = [];
+            if($scope.selectIsToggled(slide)) {
+
+                $scope.selection.splice($scope.selection.indexOf(slide), 1)
+            }
+            else {
+                $scope.selection.push( slide )
+            }
         }
 
         $scope.selectIsToggled = function(slide) {
 
-            return $scope.model.value.slides.indexOf(slide) != -1
+            return $scope.selection.indexOf(slide) != -1
         }
+
+        ////
+
+        $scope.slideToggle = function($event, slide) {
+
+            if($scope.slide === slide) {
+                $scope.slide = ''
+            }
+            else {
+                $scope.slide = slide
+            }
+        }
+
+        $scope.slideIsToggled = function(slide) {
+
+            return $scope.slide === slide
+        }
+
+        ////
 
         $scope.onChangeSlideDuration = function() {
             $scope.model.value.slideDuration = $scope.slideDuration
