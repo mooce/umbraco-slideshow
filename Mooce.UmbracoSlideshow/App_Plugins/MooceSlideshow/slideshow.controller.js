@@ -208,6 +208,7 @@ angular.module("umbraco")
         $scope.sortSlide = function($event, slide, direction) {
 
             $event.preventDefault();
+            $event.stopPropagation();
             
             var slides = $scope.model.value.slides
             var index = slides.indexOf(slide)

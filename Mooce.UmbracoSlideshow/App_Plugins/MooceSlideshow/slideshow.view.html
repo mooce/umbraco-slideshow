@@ -1,5 +1,5 @@
 <div class="mooce-slideshow" ng-controller="Mooce.Slideshow">
-    <div class="mooce-preview">
+    <div class="mooce-preview" ng-if="slide">
         <div class="mooce-slide-image">
             <img ng-if="slide.backgroundUrl" src="{{ slide.backgroundUrl }}" />
             <span class="mooce-actions" ng-if="slide.backgroundUrl">
@@ -24,6 +24,12 @@
             <div class="mooce-editable-field">
                 <textarea placeholder="Caption" ng-model="slide.caption"></textarea>
                 <i class="mdi mdi-pencil"></i>
+            </div>
+        </div>
+        <div>
+            <div class="mooce-editable-field">
+                <label>Slide duration</label>
+                <input ng-model="slideDuration" ng-change="onChangeSlideDuration()" type="number" min="1" />
             </div>
         </div>
 
@@ -134,9 +140,5 @@
             </div>
         </li>
     </ul>
-    <div>
-        <label>Slide duration</label>
-        <input ng-model="slideDuration" ng-change="onChangeSlideDuration()" type="number" min="1" />
-    </div>
     -->
 </div>
