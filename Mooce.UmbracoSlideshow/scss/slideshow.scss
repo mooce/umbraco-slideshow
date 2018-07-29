@@ -8,6 +8,10 @@ $spacing: 5px;
     display: flex;
     flex-direction: row;
     
+    .mdi { 
+        font-size: 1rem !important;
+    }
+
     .mooce-preview {
         flex: 0.6;
         margin-right: 1rem;
@@ -55,26 +59,42 @@ $spacing: 5px;
                 position: relative;
                 border-radius: 2px;
                 margin-bottom: 5px;
-                background: $color-grey;
+                cursor: pointer;
 
                 input {
                     position: absolute;
-                    top:1rem;
-                    left:1rem;
-                    margin:0;
+                    top:0.5rem;
+                    left:0.5rem;
+
                 }
 
                 h4 {
                     margin: 0;
                     padding: .5rem;
-                    padding-right: 6rem;
+                    padding-right: 5rem;
+                    padding-left: 1.5rem;
                     line-height: 1.75;
+                    font-size: 1rem;
+                }
+
+                &:hover {
+
+                    background-color: $color-grey;
+
+                    .mooce-actions {
+                        display: block;
+                    }
+                }
+
+                &.mooce-selected {
+                    background-color: #35c786;
                 }
 
                 .mooce-actions {
+                    display: none;
                     position: absolute;
-                    top:.5rem;
-                    right:.5rem;
+                    top:.35rem;
+                    right:.35rem;
                 }
             }
         }
@@ -198,12 +218,7 @@ $spacing: 5px;
 
      }
      
-     .mdi { 
-         font-size: 1.25rem;
-         position: absolute;
-         top:7px;
-         right:8px;
-     }
+     
  }
 
  .mooce-slide-link {

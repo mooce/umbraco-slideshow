@@ -16,32 +16,22 @@ angular.module("umbraco")
             link : 'http://localhost:7000/media/1003/18531852339_981b067419_h.jpg'
         },{ 
             index : 2,
-            heading : 'b',
+            heading : 'asb',
             backgroundUrl:'http://localhost:7000/media/1003/18531852339_981b067419_h.jpg',
             link : 'http://localhost:7000/media/1003/18531852339_981b067419_h.jpg'
         },{ 
-            index : 2,
-            heading : 'b',
+            index : 3,
+            heading : 'asb',
             backgroundUrl:'http://localhost:7000/media/1003/18531852339_981b067419_h.jpg',
             link : 'http://localhost:7000/media/1003/18531852339_981b067419_h.jpg'
         },{ 
-            index : 2,
-            heading : 'b',
+            index : 4,
+            heading : 'basd',
             backgroundUrl:'http://localhost:7000/media/1003/18531852339_981b067419_h.jpg',
             link : 'http://localhost:7000/media/1003/18531852339_981b067419_h.jpg'
         },{ 
-            index : 2,
-            heading : 'b',
-            backgroundUrl:'http://localhost:7000/media/1003/18531852339_981b067419_h.jpg',
-            link : 'http://localhost:7000/media/1003/18531852339_981b067419_h.jpg'
-        },{ 
-            index : 2,
-            heading : 'b',
-            backgroundUrl:'http://localhost:7000/media/1003/18531852339_981b067419_h.jpg',
-            link : 'http://localhost:7000/media/1003/18531852339_981b067419_h.jpg'
-        },{ 
-            index : 2,
-            heading : 'b',
+            index : 5,
+            heading : 'asd',
             backgroundUrl:'http://localhost:7000/media/1003/18531852339_981b067419_h.jpg',
             link : 'http://localhost:7000/media/1003/18531852339_981b067419_h.jpg'
         }]
@@ -55,6 +45,35 @@ angular.module("umbraco")
         
         $scope.toggledSlide = null;
         $scope.slideDuration = $scope.model.value.slideDuration
+
+        $scope.selection = []
+
+        $scope.selectAll = function($event) {
+            $event.preventDefault();
+
+            // Shallow copy of slide array
+            $scope.selection = [];
+            for(var i = 0; i < $scope.model.value.slides.length; i++) {
+                $scope.selection[i] = $scope.model.value.slides[i];
+            }
+        }
+
+        $scope.selectClear = function($event) {
+            $event.preventDefault();
+
+            $scope.selection = [];
+        }
+
+        $scope.selectToggle = function($event, slide) {
+            $event.preventDefault();
+
+            $scope.selection = [];
+        }
+
+        $scope.selectIsToggled = function(slide) {
+
+            return $scope.model.value.slides.indexOf(slide) != -1
+        }
 
         $scope.onChangeSlideDuration = function() {
             $scope.model.value.slideDuration = $scope.slideDuration

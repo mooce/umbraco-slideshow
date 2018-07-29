@@ -41,26 +41,37 @@
         </div>
     </div>
     <div class="mooce-slides">
-        <div>
-            <input type="checkbox">
-            <button class="btn">
+        <div> 
+
+            <button class="btn" ng-if="selection.length > 0" ng-click="selectClear($event)">
+                Clear <i class="mdi mdi-select-off"></i>
+            </button>
+            <button class="btn" ng-if="selection.length == 0" ng-click="selectAll($event)">
+                All <i class="mdi mdi-select-all"></i>
+            </button>
+            
+            <button class="btn" ng-if="selection.length > 0" ng-click="clearLink($event, slide)">
+                <i class="mdi mdi-delete"></i>
+            </button>  
+
+            <button class="btn" ng-if="selection.length == 0">
                 <i class="mdi mdi-plus"></i>
                 <span>Add slide</span>
             </button>
         </div>
         <ul>
-            <li ng-repeat="slide in getAllSlides()">
-                <input type="checkbox">
+            <li ng-repeat="slide in getAllSlides()"> 
+                <input type="checkbox" ng-click="selectToggle($event, slide)" ng-checked="selectIsToggled(slide)" />
                 <h4>
-                    {{ slide.index }}
+                    {{ slide.heading }}
                 </h4>
                 <span class="mooce-actions">                
-                    <button class="btn" ng-click="pickLink($event, slide)">
-                        <i class="mdi mdi-pencil"></i>
+                    <button class="btn" ng-if="sortEnabled(slide, -1)" ng-click="sortSlide($event, slide, -1)">
+                        <i class="mdi mdi-arrow-up"></i>
                     </button>
-                    <button class="btn" ng-click="clearLink($event, slide)">
-                        <i class="mdi mdi-delete"></i>
-                    </button>   
+                    <button class="btn" ng-if="sortEnabled(slide, 1)" ng-click="sortSlide($event, slide, 1)">
+                        <i class="mdi mdi-arrow-down"></i>
+                    </button>
                 </span>
             </li>
         </ul>
