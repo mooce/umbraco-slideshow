@@ -1,18 +1,53 @@
-$color-grey: #f4f3f5;
+$color-grey: #e9e9eb;
 $color-error: #e8014c;
 $color-white: #ffffff;
 $spacing: 5px;
 
 .mooce-slideshow {
 
- ul {
-     list-style: none;
-     padding: 0;
-     margin:0 -$spacing;
-     white-space: nowrap; 
-     overflow-x:auto;
-     max-width:100%;
- } 
+    display: flex;
+    flex-direction: row;
+    
+    .mooce-preview {
+        flex: 0.7;
+    }
+    
+    .mooce-slides {
+        flex: 0.3;
+        max-height: 25rem;
+        overflow-y: auto;
+        
+        ul {
+            list-style: none;
+            padding: 0;
+            margin:0 -$spacing;
+            white-space: nowrap; 
+            overflow-x:auto;
+            max-width:100%;
+
+            li {
+                position: relative;
+                border-radius: 2px;
+                margin: 10px 0;
+                background: $color-grey;
+
+                h4 {
+                    margin: 0;
+                    padding: 1rem;
+                    padding-right: 6rem;
+                    line-height: 1.75;
+                }
+
+                .mooce-actions {
+                    position: absolute;
+                    top:1rem;
+                    right:1rem;
+                }
+            }
+        }
+    }
+
+ 
  
  .mooce-center {
     position: absolute;
@@ -111,7 +146,7 @@ $spacing: 5px;
 }
 
 .mooce-actions {   
-    padding:0.5rem; 
+    
     .btn {
         font-size: 1rem;
         width:2rem;

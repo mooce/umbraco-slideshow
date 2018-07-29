@@ -19,6 +19,31 @@ angular.module("umbraco")
             heading : 'b',
             backgroundUrl:'http://localhost:7000/media/1003/18531852339_981b067419_h.jpg',
             link : 'http://localhost:7000/media/1003/18531852339_981b067419_h.jpg'
+        },{ 
+            index : 2,
+            heading : 'b',
+            backgroundUrl:'http://localhost:7000/media/1003/18531852339_981b067419_h.jpg',
+            link : 'http://localhost:7000/media/1003/18531852339_981b067419_h.jpg'
+        },{ 
+            index : 2,
+            heading : 'b',
+            backgroundUrl:'http://localhost:7000/media/1003/18531852339_981b067419_h.jpg',
+            link : 'http://localhost:7000/media/1003/18531852339_981b067419_h.jpg'
+        },{ 
+            index : 2,
+            heading : 'b',
+            backgroundUrl:'http://localhost:7000/media/1003/18531852339_981b067419_h.jpg',
+            link : 'http://localhost:7000/media/1003/18531852339_981b067419_h.jpg'
+        },{ 
+            index : 2,
+            heading : 'b',
+            backgroundUrl:'http://localhost:7000/media/1003/18531852339_981b067419_h.jpg',
+            link : 'http://localhost:7000/media/1003/18531852339_981b067419_h.jpg'
+        },{ 
+            index : 2,
+            heading : 'b',
+            backgroundUrl:'http://localhost:7000/media/1003/18531852339_981b067419_h.jpg',
+            link : 'http://localhost:7000/media/1003/18531852339_981b067419_h.jpg'
         }]
         
         $scope.toggledSlide = null;
