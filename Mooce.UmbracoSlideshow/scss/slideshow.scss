@@ -1,4 +1,5 @@
 $color-grey: #e9e9eb;
+$color-dark: #444444;
 $color-error: #e8014c;
 $color-white: #ffffff;
 $spacing: 5px;
@@ -9,7 +10,7 @@ $spacing: 5px;
     flex-direction: row;
     
     .mdi { 
-        font-size: 1rem !important;
+        font-size: 1rem;
     }
 
     .mooce-preview {
@@ -21,7 +22,8 @@ $spacing: 5px;
 
             position: relative;
             height: 17rem;
-            background: repeating-linear-gradient(45deg, #ffffff00, #ffffff00 5px, darken($color-grey, 5%) 5px, darken($color-grey, 5%) 10px);
+            background: repeating-linear-gradient(45deg, #ffffff00, #ffffff00 10px, 
+            lighten($color-grey, 5%) 10px, lighten($color-grey, 5%) 20px);
 
             img {
                 width: 100%;
@@ -29,13 +31,40 @@ $spacing: 5px;
                 display: block;
                 object-fit: cover;
             }
+            
+            &:hover {
+                .mooce-no-image {
+                background: darken($color-grey, 5%);
+                }
 
-            .mooce-center {
-                color: #fff;
-                background: #35c786;
+                .mooce-actions {
+                    opacity: 1;
+                }
+            }
+
+            .mooce-no-image {
+                color: $color-dark;
+                background: $color-grey;
+
+
+                .mdi {
+                    font-size: 2rem;
+                }
+
+                span {
+                    position: absolute;
+                    width: 15rem;
+                    margin-left: -7.5rem;
+                    text-align: center;
+                    margin-top: 4rem;
+                    font-size: 1rem;
+                    left:50%;
+                }
             }
 
             .mooce-actions {
+                opacity: 0;
+                transition: opacity ease-in-out 0.25s;
                 position: absolute;
                 bottom: .5rem;
                 right: .5rem;
@@ -76,16 +105,6 @@ $spacing: 5px;
                 padding-left: 4.5rem;
                 padding-right: 5rem;
 
-                img {
-                    position: absolute;
-                    top:0.5rem;
-                    left:0.5rem;
-                    margin:0;
-                    width:3rem;
-                    height:3rem;
-                    border-radius: 1.5rem;
-                    object-fit: cover;
-                }
 
                 h4 {
                     margin: 0;
@@ -100,19 +119,43 @@ $spacing: 5px;
                     background-color: $color-grey;
 
                     .mooce-actions {
-                        display: block;
+                        opacity: 1;
                     }
                 }
 
                 &.mooce-selected {
                     background-color: #35c786;
                 }
+                
+                img, .mooce-slide-no-image {
+                    position: absolute;
+                    top:0.5rem;
+                    left:0.5rem;
+                    margin:0;
+                    width:3rem;
+                    height:3rem;
+                    border-radius: 1.5rem;
+                    object-fit: cover;
+                    background: $color-grey;
+                    
+                    .mdi {
+                        font-size: 1.5rem;
+                        top: 0.75rem;
+                        position: absolute;
+                        width: 100%;
+                        text-align: center;
+                    }
+                }
 
                 .mooce-actions {
-                  //  display: none;
+                    
+                    display: block;
                     position: absolute;
                     top:.35rem;
                     right:.35rem;
+
+                    opacity: 0;
+                    transition: opacity ease-in-out 0.25s;
                 }
 
                 input {  
@@ -123,9 +166,23 @@ $spacing: 5px;
         }
     }
 
+    .mooce-3-1-fields {
+        > div {
+            float:left;
+            box-sizing: border-box;
+            &:first-child {
+                width:75%;
+            } 
+            &:last-child {
+                width:25%;
+            }
+        }
+
+    }
+
  
  
- .mooce-center {
+ .mooce-no-image {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -211,11 +268,17 @@ $spacing: 5px;
      position: relative;
      padding-top: 1.5rem;
 
+    > .mdi {
+         position: absolute;
+         top:1.85rem;
+         right:0.5rem;
+     }
+
      label {
          position: absolute;
          top:0.125rem;
          left:0;
-         color:$color-grey;
+         color: #a09ca9;
          font-size: 0.75rem;
      }
 
@@ -249,37 +312,26 @@ $spacing: 5px;
         }
 
      }
-     
-     
- }
+ 
+ } 
 
  .mooce-slide-link {
-     padding-right: 7rem;
+     padding-right: 8rem;
      position: relative;
-     height: 3rem;
+     
+     white-space: nowrap;
+     text-overflow: ellipsis;
+     overflow: hidden;
 
-     a {
-         display: block;
-         overflow: hidden;
-         text-overflow: ellipsis;
-         position: relative;
-         top:0.5rem;
+     .btn {
+         max-width: 100%;
      }
      
      .mooce-actions {
-         position: absolute;
-         right:0;
-         top: 0;
-     }
-
-     > .btn {
-         width:100%;
-     }
- }
-
- .mooce-slide-order {
-     a {
-         
-     }
- }
+        position: absolute;
+        right: 1.5rem;
+        top: 1.5rem;
+     } 
+ } 
+ 
 }
