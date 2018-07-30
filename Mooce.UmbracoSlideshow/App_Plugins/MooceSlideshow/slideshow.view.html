@@ -63,16 +63,25 @@
                 <span>Add slide</span>
             </button>
 
-            <small ng-if="getAllSlides().length > 0">
+            <small ng-if="selection.length === 0 && getAllSlides().length > 0">
                 {{ getAllSlides().length }} slides total
+            </small>
+            <small ng-if="selection.length > 0">
+                {{ selection.length }} slides selected
             </small>
         </div>
         <ul>
             <li ng-repeat="slide in getAllSlides()" ng-class="{ 'mooce-selected' : slideIsToggled(slide) }" ng-click="slideToggle($event, slide)"> 
-                <img src="{{ slide.backgroundUrl }}" ng-if="slide.backgroundUrl" />
-                <span class="mooce-slide-no-image" ng-if="!slide.backgroundUrl">
+                
+                <img src="{{ slide.backgroundUrl }}" ng-click="selectToggle($event, slide)" ng-if="!selectIsToggled(slide) && slide.backgroundUrl" />
+                
+                <span class="mooce-slide-no-image" ng-click="selectToggle($event, slide)" ng-if="!selectIsToggled(slide) && !slide.backgroundUrl">
                     <i class="mdi mdi-image-filter-hdr"></i>
                 </span>
+                <button class="mooce-slide-selected" ng-if="selectIsToggled(slide)">
+                    <i class="mdi mdi-arrow-down mdi-check"></i>
+                </button>
+
                 <h4>
                     {{ slide.heading }}
                 </h4>
@@ -85,9 +94,6 @@
                     </button>
                     <button class="btn" ng-if="sortEnabled(slide, 1)" ng-click="sortSlide($event, slide, 1)">
                         <i class="mdi mdi-arrow-down"></i>
-                    </button>
-                    <button class="btn" ng-click="selectToggle($event, slide)">
-                        <i class="mdi mdi-arrow-down" ng-class="{ 'mdi-checkbox-marked-circle' : selectIsToggled(slide), 'mdi-checkbox-blank-circle' : !selectIsToggled(slide) }"></i>
                     </button>
                 </span>
             </li>

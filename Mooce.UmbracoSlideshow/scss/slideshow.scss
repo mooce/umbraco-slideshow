@@ -132,7 +132,7 @@ $spacing: 5px;
                     color: #a09ca9;
                 }
 
-                img, .mooce-slide-no-image {
+                img, .mooce-slide-no-image, .mooce-slide-selected {
                     position: absolute;
                     top:0.5rem;
                     left:0.5rem;
@@ -149,6 +149,16 @@ $spacing: 5px;
                         position: absolute;
                         width: 100%;
                         text-align: center;
+                    }
+                }
+
+                .mooce-slide-selected {
+                    border: none;
+                    background: #675d79;
+                    .mdi {
+                        color:$color-white;
+                        left:0;
+                        top:0.8rem;
                     }
                 }
 
