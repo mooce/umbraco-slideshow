@@ -209,6 +209,15 @@ $spacing: 5px;
  .mooce-editable-field {
      display: block;
      position: relative;
+     padding-top: 1.5rem;
+
+     label {
+         position: absolute;
+         top:0.125rem;
+         left:0;
+         color:$color-grey;
+         font-size: 0.75rem;
+     }
 
      textarea, input {
         padding: 5px;

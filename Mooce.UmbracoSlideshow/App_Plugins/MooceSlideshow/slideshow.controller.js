@@ -117,7 +117,7 @@ angular.module("umbraco")
                 link:''
             };
 
-            $scope.model.value.slides.push(slide);
+            $scope.model.value.slides.unshift(slide);
             $scope.slide = slide;
         }
 

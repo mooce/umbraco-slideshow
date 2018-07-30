@@ -14,25 +14,20 @@
                 <i class="mdi mdi-pencil"></i>
             </button>
         </div>
-        <div>
-            <div class="mooce-editable-field">
-                <input placeholder="Heading" ng-model="slide.heading" />
-                <i class="mdi mdi-pencil"></i>
-            </div>
+        <div class="mooce-editable-field">
+            <label>Heading</label>
+            <input ng-model="slide.heading" />
+            <i class="mdi mdi-pencil"></i>
         </div>
-        <div>
-            <div class="mooce-editable-field">
-                <textarea placeholder="Caption" ng-model="slide.caption"></textarea>
-                <i class="mdi mdi-pencil"></i>
-            </div>
+        <div class="mooce-editable-field">
+            <label>Caption</label>
+            <textarea ng-model="slide.caption"></textarea>
+            <i class="mdi mdi-pencil"></i>
         </div>
-        <div>
-            <div class="mooce-editable-field">
-                <label>Slide duration</label>
-                <input ng-model="slideDuration" ng-change="onChangeSlideDuration()" type="number" min="1" />
-            </div>
+        <div class="mooce-editable-field">
+            <label>Slide duration</label>
+            <input ng-model="slideDuration" ng-change="onChangeSlideDuration()" type="number" min="1" />
         </div>
-
         <div class="mooce-slide-link">
             <a href="{{ slide.link }}" ng-if="slide.link">{{ slide.link }}</a>
             <span class="mooce-actions" ng-if="slide.link">
