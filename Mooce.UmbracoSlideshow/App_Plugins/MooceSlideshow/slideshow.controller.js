@@ -12,6 +12,7 @@ angular.module("umbraco")
         $scope.model.value.slides = [{ 
             index : 1,
             heading : 'a',
+            caption : 'dasdsadsadsd',
             //backgroundUrl:'http://localhost:7000/media/1005/18530280048_459b8b61b2_h.jpg',
             link : 'http://localhost:7000/media/1003/18531852339_981b067419_h.jpg'
         },{ 

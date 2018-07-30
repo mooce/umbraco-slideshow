@@ -101,6 +101,7 @@ $spacing: 5px;
                 border-radius: 2px;
                 margin-bottom: 0.5rem;
                 cursor: pointer;
+                min-height: 3.25rem;
                 padding: .5rem;
                 padding-left: 4.5rem;
                 padding-right: 5rem;
@@ -127,6 +128,10 @@ $spacing: 5px;
                     background-color: #35c786;
                 }
                 
+                small {
+                    color: #a09ca9;
+                }
+
                 img, .mooce-slide-no-image {
                     position: absolute;
                     top:0.5rem;
@@ -151,16 +156,11 @@ $spacing: 5px;
                     
                     display: block;
                     position: absolute;
-                    top:.35rem;
+                    top:.95rem;
                     right:.35rem;
 
                     opacity: 0;
                     transition: opacity ease-in-out 0.25s;
-                }
-
-                input {  
-                    margin:0;
-                    // display: none;
                 }
             }
         }
