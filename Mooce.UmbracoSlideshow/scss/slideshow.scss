@@ -8,6 +8,7 @@ $spacing: 5px;
 
     display: flex;
     flex-direction: row;
+    max-height: 30rem;
     
     .mdi { 
         font-size: 1rem;
@@ -73,14 +74,14 @@ $spacing: 5px;
     }
     
     .mooce-slides {
-        flex: 1;
-        max-height: 25rem;
+        flex: 1; 
         display: flex;
         flex-direction: column;
         
         .mooce-slides-menubar {
 
             position: relative;
+            margin-bottom: 1rem;
 
             small {
                 position: absolute;
@@ -89,7 +90,20 @@ $spacing: 5px;
                 color:#a09ca9;
             }
 
-            .mooce-delete {
+            .mooce-select-control {
+                background: none;
+                width: 2rem;
+                height: 2rem;
+                padding: 0; 
+                border: none;
+
+                .mdi {
+                    line-height: 1.25;
+    font-size: 1.5rem;
+                }
+            }
+
+            .mooce-pull-right {
                 float: right;
             }
         }

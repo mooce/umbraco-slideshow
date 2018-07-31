@@ -47,19 +47,15 @@
     </div>
     <div class="mooce-slides">
         <div class="mooce-slides-menubar">
-            <button class="btn" ng-click="selectAll($event)">
-                <span ng-if="selection.length == 0">All</span><i class="mdi mdi-select-all"></i>
-            </button>
-
-            <button class="btn" ng-if="selection.length == 0" ng-click="slideAdd($event)">
+            <button class="mooce-select-control" ng-click="selectAll($event)">
+                <i class="mdi mdi-checkbox-marked" ng-if="selection.length > 0"></i>
+                <i class="mdi mdi-checkbox-blank-outline" ng-if="selection.length == 0"></i>
+            </button> 
+            <button class="btn mooce-pull-right" ng-if="selection.length == 0" ng-click="slideAdd($event)">
                 <i class="mdi mdi-plus"></i>
                 <span>Add slide</span>
-            </button>
-
-            <small ng-if="selection.length === 0 && getAllSlides().length > 0">
-                {{ getAllSlides().length }} slides total
-            </small>
-            <button class="btn mooce-delete" ng-if="selection.length > 0" ng-click="deleteSelected($event)">
+            </button>   
+            <button class="btn mooce-pull-right" ng-if="selection.length > 0" ng-click="deleteSelected($event)">
                 <i class="mdi mdi-delete"></i> Delete {{ selection.length }} slides
             </button>
         </div>
