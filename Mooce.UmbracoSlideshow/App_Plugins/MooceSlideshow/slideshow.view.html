@@ -17,22 +17,17 @@
         </div>
         <div class="mooce-editable-field">
             <label>Heading</label>
-            <input ng-model="slide.heading" />
-            <i class="mdi mdi-pencil"></i>
+            <input ng-model="slide.heading" /> 
         </div>
         <div class="mooce-editable-field">
             <label>Caption</label>
-            <textarea ng-model="slide.caption"></textarea>
-            <i class="mdi mdi-pencil"></i>
+            <textarea ng-model="slide.caption"></textarea> 
         </div>
         <div class="mooce-3-1-fields clearfix">
             <div class="mooce-editable-field mooce-slide-link">
                 <label>Link</label>
-                <a href="{{ slide.link }}" class="btn" ng-if="slide.link">{{ slide.link }}</a>
+                <a href="{{ slide.link.url }}"   class="btn" ng-click="pickLink($event, slide)" ng-if="slide.link">{{ slide.link.name }}</a>
                 <span class="mooce-actions" ng-if="slide.link">
-                    <button class="btn" ng-click="pickLink($event, slide)">
-                        <i class="mdi mdi-pencil"></i>
-                    </button>
                     <button class="btn" ng-click="clearLink($event, slide)">
                         <i class="mdi mdi-delete"></i>
                     </button>                    

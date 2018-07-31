@@ -11,7 +11,9 @@ $spacing: 5px;
     max-height: 30rem;
     
     .mdi { 
-        font-size: 1rem;
+        font-size: 24px;
+        line-height: 24px;
+        position: relative;
     }
 
     .mooce-preview {
@@ -23,8 +25,7 @@ $spacing: 5px;
 
             position: relative;
             height: 17rem;
-            background: repeating-linear-gradient(45deg, #ffffff00, #ffffff00 10px, 
-            lighten($color-grey, 5%) 10px, lighten($color-grey, 5%) 20px);
+            background: $color-grey;
 
             img {
                 width: 100%;
@@ -45,7 +46,7 @@ $spacing: 5px;
 
             .mooce-no-image {
                 color: $color-dark;
-                background: $color-grey;
+                background: darken($color-grey, 2.5%);
 
 
                 .mdi {
@@ -219,7 +220,7 @@ $spacing: 5px;
     top: 50%;
     left: 50%;
     margin-left: -2.5rem;
-    margin-top: -2.5rem;
+    margin-top: -3.5rem;
     border-radius: 50%;
     width: 5rem;
     height: 5rem;
@@ -298,25 +299,20 @@ $spacing: 5px;
  .mooce-editable-field {
      display: block;
      position: relative;
-     padding-top: 1.5rem;
-
-    > .mdi {
-         position: absolute;
-         top:1.85rem;
-         right:0.5rem;
-     }
+     padding-top: 2rem;
 
      label {
          position: absolute;
-         top:0.125rem;
+         top:0.5rem;
          left:0;
-         color: #a09ca9;
+         color: $color-dark;
          font-size: 0.75rem;
      }
 
      textarea, input {
         padding: 5px;
-        background: #f4f3f5;
+        background: $color-white;
+        outline:1px solid #bbbabf;
         position: relative;
         border-color:transparent;
         border-radius: 5px;
@@ -325,23 +321,8 @@ $spacing: 5px;
         box-sizing: border-box;
         
         &:hover {
-            background-color: darken( #f4f3f5, 5% );
             cursor: pointer;
-        }
-
-        &:focus {
-            
-            background: $color-white;
-            outline:1px solid #bbbabf;
-
-            &:hover {
-                cursor: unset;
-            }
-            + .mdi {
-                visibility: hidden;
-                pointer-events: none;
-            }
-        }
+        } 
 
      }
  
@@ -362,7 +343,7 @@ $spacing: 5px;
      .mooce-actions {
         position: absolute;
         right: 1.5rem;
-        top: 1.5rem;
+        top: 2rem;
      } 
  } 
  

@@ -14,34 +14,34 @@ angular.module("umbraco")
             heading : 'a',
             caption : 'dasdsadsadsd',
             //backgroundUrl:'http://localhost:7000/media/1005/18530280048_459b8b61b2_h.jpg',
-            link : 'http://localhost:7000/media/1003/18531852339_981b067419_h.jpg'
+            link : ''
         },{ 
             index : 2,
             heading : 'asb',
             backgroundUrl:'http://localhost:7000/media/1003/18531852339_981b067419_h.jpg',
-            link : 'http://localhost:7000/media/1003/18531852339_981b067419_h.jpg'
+            link : ''
         },{ 
             index : 3,
             heading : 'asb',
             backgroundUrl:'http://localhost:7000/media/1003/18531852339_981b067419_h.jpg',
-            link : 'http://localhost:7000/media/1003/18531852339_981b067419_h.jpg'
+            link : ''
         },{ 
             index : 4,
             heading : 'basd',
             backgroundUrl:'http://localhost:7000/media/1003/18531852339_981b067419_h.jpg',
-            link : 'http://localhost:7000/media/1003/18531852339_981b067419_h.jpg'
+            link : ''
         },{ 
             index : 5,
             heading : 'asd',
             backgroundUrl:'http://localhost:7000/media/1003/18531852339_981b067419_h.jpg',
-            link : 'http://localhost:7000/media/1003/18531852339_981b067419_h.jpg'
+            link : ''
         }]
 
         $scope.slide = { 
             index : 2,
             heading : 'b',
             backgroundUrl:'http://localhost:7000/media/1003/18531852339_981b067419_h.jpg',
-            link : 'http://localhost:7000/media/1003/18531852339_981b067419_h.jpg'
+            link : ''
         }
         /*''*/
         
@@ -193,8 +193,8 @@ angular.module("umbraco")
 
             $event.preventDefault();
             dialogService.linkPicker({ onlyImages : true, callback : function(item) {
-
-                slide.link = item.url
+                
+                slide.link = item
             }})
         }   
         
