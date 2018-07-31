@@ -13,34 +13,34 @@ angular.module("umbraco")
             index : 1,
             heading : 'a',
             caption : 'dasdsadsadsd',
-            //backgroundUrl:'http://localhost:7000/media/1005/18530280048_459b8b61b2_h.jpg',
+            //image:'http://localhost:7000/media/1005/18530280048_459b8b61b2_h.jpg',
             link : ''
         },{ 
             index : 2,
             heading : 'asb',
-            backgroundUrl:'http://localhost:7000/media/1003/18531852339_981b067419_h.jpg',
+            image: '',//'http://localhost:7000/media/1003/18531852339_981b067419_h.jpg',
             link : ''
         },{ 
             index : 3,
             heading : 'asb',
-            backgroundUrl:'http://localhost:7000/media/1003/18531852339_981b067419_h.jpg',
+            image:'',//'http://localhost:7000/media/1003/18531852339_981b067419_h.jpg',
             link : ''
         },{ 
             index : 4,
             heading : 'basd',
-            backgroundUrl:'http://localhost:7000/media/1003/18531852339_981b067419_h.jpg',
+            image:'',//'http://localhost:7000/media/1003/18531852339_981b067419_h.jpg',
             link : ''
         },{ 
             index : 5,
             heading : 'asd',
-            backgroundUrl:'http://localhost:7000/media/1003/18531852339_981b067419_h.jpg',
+            image:'',//'http://localhost:7000/media/1003/18531852339_981b067419_h.jpg',
             link : ''
         }]
 
         $scope.slide = { 
             index : 2,
             heading : 'b',
-            backgroundUrl:'http://localhost:7000/media/1003/18531852339_981b067419_h.jpg',
+            image:'',//'http://localhost:7000/media/1003/18531852339_981b067419_h.jpg',
             link : ''
         }
         /*''*/
@@ -120,7 +120,7 @@ angular.module("umbraco")
             var index = $scope.model.value.slides.length
             var slide = {
                 index : index,
-                backgroundUrl:'',
+                image:'',
                 heading:'Slide ' + index,
                 caption:'',
                 link:''
@@ -178,15 +178,20 @@ angular.module("umbraco")
 
             $event.preventDefault();
             dialogService.mediaPicker({ onlyImages : true, callback : function(media) {
-
-                slide.backgroundUrl = media.image
+                if(!media.isFolder) {
+                    slide.image = {
+                        id : media.id,
+                        name : media.name,
+                        url : media.image
+                    }
+                }
             }})
         } 
 
         $scope.clearPhoto = function($event, slide) {
 
             $event.preventDefault();
-            slide.backgroundUrl = ''
+            slide.image = ''
         } 
 
         $scope.pickLink = function($event, slide) {

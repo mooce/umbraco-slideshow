@@ -1,8 +1,8 @@
 <div class="mooce-slideshow" ng-controller="Mooce.Slideshow">
     <div class="mooce-preview" ng-if="slide">
         <div class="mooce-slide-image">
-            <img ng-if="slide.backgroundUrl" src="{{ slide.backgroundUrl }}" />
-            <span class="mooce-actions" ng-if="slide.backgroundUrl">
+            <img ng-if="slide.image" src="{{ slide.image.url }}" />
+            <span class="mooce-actions" ng-if="slide.image">
                 <button class="btn" ng-click="pickPhoto($event, slide)">
                     <i class="mdi mdi-pencil"></i>
                 </button>
@@ -10,7 +10,7 @@
                     <i class="mdi mdi-delete"></i>
                 </button>
             </span>
-            <button class="btn mooce-no-image" ng-if="!slide.backgroundUrl" ng-click="pickPhoto($event, slide)">
+            <button class="btn mooce-no-image" ng-if="!slide.image" ng-click="pickPhoto($event, slide)">
                 <i class="mdi mdi-image-filter-hdr"></i>
                 <span>Pick a photo for this slide</span>
             </button>
@@ -32,7 +32,7 @@
                         <i class="mdi mdi-delete"></i>
                     </button>                    
                 </span>
-                <button class="btn" ng-if="!slide.link" ng-click="pickLink($event, slide)">Pick link</button>
+                <button class="btn" ng-if="!slide.link" ng-click="pickLink($event, slide)">Pick Content</button>
             </div>
             <div class="mooce-editable-field">
                 <label>Slide duration</label>
@@ -57,9 +57,9 @@
         <ul>
             <li ng-repeat="slide in getAllSlides()" ng-class="{ 'mooce-selected' : slideIsToggled(slide) }" ng-click="slideToggle($event, slide)"> 
                 
-                <img src="{{ slide.backgroundUrl }}" ng-click="selectToggle($event, slide)" ng-if="!selectIsToggled(slide) && slide.backgroundUrl" />
+                <img src="{{ slide.image.url }}" ng-click="selectToggle($event, slide)" ng-if="!selectIsToggled(slide) && slide.image" />
                 
-                <span class="mooce-slide-no-image" ng-click="selectToggle($event, slide)" ng-if="!selectIsToggled(slide) && !slide.backgroundUrl">
+                <span class="mooce-slide-no-image" ng-click="selectToggle($event, slide)" ng-if="!selectIsToggled(slide) && !slide.image">
                     <i class="mdi mdi-image-filter-hdr"></i>
                 </span>
                 <button class="mooce-slide-selected" ng-click="selectToggle($event, slide)" ng-if="selectIsToggled(slide)">
