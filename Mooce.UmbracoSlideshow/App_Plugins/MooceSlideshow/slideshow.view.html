@@ -47,16 +47,9 @@
     </div>
     <div class="mooce-slides">
         <div class="mooce-slides-menubar">
-            <button class="btn" ng-if="selection.length > 0" ng-click="selectClear($event)">
-                Clear <i class="mdi mdi-select-off"></i>
+            <button class="btn" ng-click="selectAll($event)">
+                <span ng-if="selection.length == 0">All</span><i class="mdi mdi-select-all"></i>
             </button>
-            <button class="btn" ng-if="selection.length == 0" ng-click="selectAll($event)">
-                All <i class="mdi mdi-select-all"></i>
-            </button>
-            
-            <button class="btn" ng-if="selection.length > 0" ng-click="deleteSelected($event)">
-                <i class="mdi mdi-delete"></i>
-            </button>  
 
             <button class="btn" ng-if="selection.length == 0" ng-click="slideAdd($event)">
                 <i class="mdi mdi-plus"></i>
@@ -66,9 +59,9 @@
             <small ng-if="selection.length === 0 && getAllSlides().length > 0">
                 {{ getAllSlides().length }} slides total
             </small>
-            <small ng-if="selection.length > 0">
-                {{ selection.length }} slides selected
-            </small>
+            <button class="btn mooce-delete" ng-if="selection.length > 0" ng-click="deleteSelected($event)">
+                <i class="mdi mdi-delete"></i> Delete {{ selection.length }} slides
+            </button>
         </div>
         <ul>
             <li ng-repeat="slide in getAllSlides()" ng-class="{ 'mooce-selected' : slideIsToggled(slide) }" ng-click="slideToggle($event, slide)"> 
@@ -78,7 +71,7 @@
                 <span class="mooce-slide-no-image" ng-click="selectToggle($event, slide)" ng-if="!selectIsToggled(slide) && !slide.backgroundUrl">
                     <i class="mdi mdi-image-filter-hdr"></i>
                 </span>
-                <button class="mooce-slide-selected" ng-if="selectIsToggled(slide)">
+                <button class="mooce-slide-selected" ng-click="selectToggle($event, slide)" ng-if="selectIsToggled(slide)">
                     <i class="mdi mdi-arrow-down mdi-check"></i>
                 </button>
 

@@ -53,10 +53,17 @@ angular.module("umbraco")
         $scope.selectAll = function($event) {
             $event.preventDefault();
 
-            // Shallow copy of slide array
-            $scope.selection = [];
-            for(var i = 0; i < $scope.model.value.slides.length; i++) {
-                $scope.selection[i] = $scope.model.value.slides[i];
+            if($scope.selection.length > 0) {
+                
+                $scope.selection = [];
+            }
+            else {
+                
+                // Shallow copy of slide array
+                $scope.selection = [];
+                for(var i = 0; i < $scope.model.value.slides.length; i++) {
+                    $scope.selection[i] = $scope.model.value.slides[i];
+                }
             }
         }
 
@@ -67,11 +74,11 @@ angular.module("umbraco")
         }
 
         $scope.selectToggle = function($event, slide) {
+             
             $event.preventDefault();
             $event.stopPropagation();
 
             if($scope.selectIsToggled(slide)) {
-
                 $scope.selection.splice($scope.selection.indexOf(slide), 1)
             }
             else {
