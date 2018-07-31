@@ -5,48 +5,28 @@ angular.module("umbraco")
         assetsService.loadCss("https://cdn.materialdesignicons.com/2.5.94/css/materialdesignicons.min.css");
         assetsService.loadCss("/App_Plugins/MooceSlideshow/styles.css");
         
-        $scope.model.value = angular.extend({}, { 
-            slides : [], slideDuration : 1
-        }, $scope.model.value)
+       debugger
 
-        $scope.model.value.slides = [{ 
-            index : 1,
-            heading : 'a',
-            caption : 'dasdsadsadsd',
-            //image:'http://localhost:7000/media/1005/18530280048_459b8b61b2_h.jpg',
-            link : ''
-        },{ 
-            index : 2,
-            heading : 'asb',
-            image: '',//'http://localhost:7000/media/1003/18531852339_981b067419_h.jpg',
-            link : ''
-        },{ 
-            index : 3,
-            heading : 'asb',
-            image:'',//'http://localhost:7000/media/1003/18531852339_981b067419_h.jpg',
-            link : ''
-        },{ 
-            index : 4,
-            heading : 'basd',
-            image:'',//'http://localhost:7000/media/1003/18531852339_981b067419_h.jpg',
-            link : ''
-        },{ 
-            index : 5,
-            heading : 'asd',
-            image:'',//'http://localhost:7000/media/1003/18531852339_981b067419_h.jpg',
-            link : ''
-        }]
+        if(!Array.isArray($scope.model.value)) {
+            $scope.model.value = []
+        }
 
-        $scope.slide = { 
+        $scope.model.value = $scope.model.value.filter(function(slide) {
+
+            if(!Number.isInteger(slide.index)) return false;
+            
+            return true;
+        })
+
+        $scope.slide = $scope.model.value[0] /*{ 
             index : 2,
             heading : 'b',
             image:'',//'http://localhost:7000/media/1003/18531852339_981b067419_h.jpg',
             link : ''
-        }
+        }*/
         /*''*/
         
-        $scope.toggledSlide = null;
-        $scope.slideDuration = $scope.model.value.slideDuration
+        $scope.toggledSlide = null; 
 
         $scope.selection = []
 
@@ -61,8 +41,8 @@ angular.module("umbraco")
                 
                 // Shallow copy of slide array
                 $scope.selection = [];
-                for(var i = 0; i < $scope.model.value.slides.length; i++) {
-                    $scope.selection[i] = $scope.model.value.slides[i];
+                for(var i = 0; i < $scope.model.value.length; i++) {
+                    $scope.selection[i] = $scope.model.value[i];
                 }
             }
         }
@@ -101,9 +81,9 @@ angular.module("umbraco")
             for(var i = 0; i < $scope.selection.length; i++) {
                 
                 var slide = $scope.selection[i];
-                var index = $scope.model.value.slides.indexOf(slide);
+                var index = $scope.model.value.indexOf(slide);
 
-                $scope.model.value.slides.splice(index, 1);
+                $scope.model.value.splice(index, 1);
 
                 // If slide being deleted currently toggled, untoggle it
                 if(slide === $scope.slide) {
@@ -117,7 +97,7 @@ angular.module("umbraco")
         $scope.slideAdd = function($event) {
             $event.preventDefault();
 
-            var index = $scope.model.value.slides.length
+            var index = $scope.model.value.length
             var slide = {
                 index : index,
                 image:'',
@@ -126,7 +106,7 @@ angular.module("umbraco")
                 link:''
             };
 
-            $scope.model.value.slides.unshift(slide);
+            $scope.model.value.unshift(slide);
             $scope.slide = slide;
         }
 
@@ -150,12 +130,12 @@ angular.module("umbraco")
         ////
 
         $scope.onChangeSlideDuration = function() {
-            $scope.model.value.slideDuration = $scope.slideDuration
+            
         }
 
         $scope.getAllSlides = function() {
 
-            var slides = $scope.model.value.slides
+            var slides = $scope.model.value
 
             return slides
         }
@@ -211,7 +191,7 @@ angular.module("umbraco")
 
         $scope.sortEnabled = function(slide, direction) {
             
-            var slides = $scope.model.value.slides
+            var slides = $scope.model.value
             var index = slides.indexOf(slide)
             if(direction < 0) {
                 return index > 0
@@ -226,7 +206,7 @@ angular.module("umbraco")
             $event.preventDefault();
             $event.stopPropagation();
             
-            var slides = $scope.model.value.slides
+            var slides = $scope.model.value
             var index = slides.indexOf(slide)
 
             if(direction < 0) {

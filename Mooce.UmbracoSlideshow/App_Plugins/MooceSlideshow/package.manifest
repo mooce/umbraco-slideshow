@@ -7,22 +7,11 @@
                 view: "~/App_Plugins/MooceSlideshow/slideshow.view.html",
                 hideLabel: true,
                 valueType : "JSON"
-            },
-            prevalues: {
-                fields: [
-                    {
-                        label: "Max Slides",
-                        description: "Maximum number of slides",
-                        key: "slidesMax",
-                        view: "number"
-                    }
-                ]
             }
         }
     ]
     ,
     javascript: [
-        '~/App_Plugins/MooceSlideshow/slideshow.service.js',
         '~/App_Plugins/MooceSlideshow/slideshow.controller.js',
     ]
 }
