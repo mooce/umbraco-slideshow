@@ -6,7 +6,7 @@
             editor: {
                 view: "~/App_Plugins/MooceSlideshow/slideshow.view.html",
                 hideLabel: true,
-                valueType : "JSON"
+                valueType : "STRING"
             }
         }
     ]

@@ -1,4 +1,8 @@
 <div class="mooce-slideshow" ng-controller="Mooce.Slideshow">
+    <div>
+        <p>{{ model.value.length }} </p>
+        <p>{{ model.value }} </p>
+    </div>
     <div class="mooce-preview" ng-if="slide">
         <div class="mooce-slide-image">
             <img ng-if="slide.image" src="{{ slide.image.url }}" />
