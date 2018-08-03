@@ -18,7 +18,7 @@ angular.module("umbraco")
                 });
 
                 $scope.slides.sort(function(a,b) {
-                    return a.index - b.index
+                    return (a.index - b.index)
                 });
             }
         }
