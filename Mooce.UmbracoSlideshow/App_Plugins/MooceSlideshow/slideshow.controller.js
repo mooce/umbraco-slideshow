@@ -5,32 +5,17 @@ angular.module("umbraco")
         assetsService.loadCss("https://cdn.materialdesignicons.com/2.5.94/css/materialdesignicons.min.css");
         assetsService.loadCss("/App_Plugins/MooceSlideshow/styles.css");
         
-        try {
-            debugger
-            var json = typeof $scope.model.value == 'string' ? JSON.parse($scope.model.value) : $scope.model.value
-            $scope.slides = []
+        function sanitize(slides) {
             
-            if(Array.isArray(json)) {
-
-                $scope.slides = json.filter(function(slide) {
-                    if(!Number.isInteger(slide.index)) return false;
-                    return true
-                });
-
-                $scope.slides.sort(function(a,b) {
-                    return (a.index - b.index)
-                });
+            if(!Array.isArray(slides)) {
+                slides = []
             }
-        }
-        catch(err) {
-            $scope.slides = []
-            $scope.model.value = JSON.stringify($scope.slides)
-        }
 
-        var listener = $scope.$watch('slides', function() {
+            slides = slides.filter(function(slide) {
+                return Number.isInteger(slide.index)
+            });
 
-            // Sanitize the model.value
-            var slides = $scope.slides.map(function(slide) {
+            slides = slides.map(function(slide) {
                 return {
                     index : slide.index,
                     image : slide.image,
@@ -38,9 +23,29 @@ angular.module("umbraco")
                     caption : slide.caption,
                     link : slide.link,
                 }
-            })
+            });
 
+            slides.sort(function(a,b) {
+                return (a.index - b.index)
+            });
+
+            return slides
+        }
+
+        try {
+            var slides = sanitize($scope.model.value)
+            $scope.slides = slides
             $scope.model.value = slides
+        }
+        catch(err) {
+            $scope.slides = []
+            $scope.model.value = []
+        }
+
+        var listener = $scope.$watch('slides', function() {
+            console.log('array', Math.random())
+            // Sanitize the model.value
+            $scope.model.value = sanitize(slides)
 
         }, true);
         
