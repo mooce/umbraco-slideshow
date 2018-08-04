@@ -1,8 +1,4 @@
 <div class="mooce-slideshow" ng-controller="Mooce.Slideshow">
-    <div>
-        <p>{{ model.value.length }} </p>
-        <p>{{ model.value }} </p>
-    </div>
     <div class="mooce-preview" ng-if="slide">
         <div class="mooce-slide-image">
             <img ng-if="slide.image" src="{{ slide.image.url }}" />
@@ -59,7 +55,7 @@
             </button>
         </div>
         <ul>
-            <li ng-repeat="slide in getAllSlides()" ng-class="{ 'mooce-selected' : slideIsToggled(slide) }" ng-click="slideToggle($event, slide)"> 
+            <li ng-repeat="slide in slides" ng-class="{ 'mooce-selected' : slideIsToggled(slide) }" ng-click="slideToggle($event, slide)"> 
                 
                 <img src="{{ slide.image.url }}" ng-click="selectToggle($event, slide)" ng-if="!selectIsToggled(slide) && slide.image" />
                 
