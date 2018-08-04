@@ -43,10 +43,8 @@ angular.module("umbraco")
         }
 
         var listener = $scope.$watch('slides', function() {
-            console.log('array', Math.random())
             // Sanitize the model.value
             $scope.model.value = sanitize(slides)
-
         }, true);
         
         $scope.$on('$destroy', function() {

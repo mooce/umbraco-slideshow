@@ -19,7 +19,7 @@ $spacing: 5px;
     .mooce-preview {
         flex: 1;
         margin-right: 1rem;
-        width:50%;
+        min-width: 50%;
         
         .mooce-slide-image {
 
@@ -75,9 +75,10 @@ $spacing: 5px;
     }
     
     .mooce-slides {
-        flex: 0.1; 
+        flex: 1; 
         display: flex;
         flex-direction: column;
+        overflow: hidden;
         
         .mooce-slides-menubar {
 
@@ -153,6 +154,9 @@ $spacing: 5px;
                 
                 small {
                     color: #a09ca9;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    display: block;
                 }
 
                 img, .mooce-slide-no-image, .mooce-slide-selected {
