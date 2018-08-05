@@ -3,7 +3,7 @@ angular.module("umbraco")
     ['$scope', '$http', '$q', 'assetsService', 'dialogService', function ($scope, $http, $q, assetsService, dialogService) {
         
         assetsService.loadCss("https://cdn.materialdesignicons.com/2.5.94/css/materialdesignicons.min.css");
-        assetsService.loadCss("/App_Plugins/MooceSlideshow/styles.css");
+        assetsService.loadCss("/App_Plugins/MooceSlideshow/slideshow.styles.css");
         
         function sanitize(slides) {
             

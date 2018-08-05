@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <licenseUrl>https://opensource.org/licenses/MIT</licenseUrl>
+    <projectUrl>https://github.com/mooce/umbraco-slideshow</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes>First release</releaseNotes>
+    <copyright>Copyright 2018</copyright>
+    <tags>umbraco datatype slideshow carousel</tags>
+    <dependencies>
+      <dependency id="UmbracoCms" version="7.11.1" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="App_Plugins\**\*.*" target="Content\App_Plugins" />
+  </files>
+</package>
