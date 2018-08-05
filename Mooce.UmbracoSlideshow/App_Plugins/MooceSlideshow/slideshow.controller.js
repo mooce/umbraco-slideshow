@@ -229,23 +229,29 @@ angular.module("umbraco")
             var slides = $scope.slides
             var index = slides.indexOf(slide)
 
-            if(direction < 0) {
+            if(index === -1) return
 
-                if(index > 0) {
-
-                    slides[ index - 1 ].index = index
-                    slides[ index ].index = index - 1
+            var slide = slides[index]
+            
+            if(direction > 0) {
+                
+                var next = slides[index + 1]
+                if(next) {
+                    slides[index + 1] = slide
+                    slides[index] = next
                 }
             }
-            else {
-
-                if(index < slides.length - 1) {
-                    
-                    slides[ index + 1 ].index = index
-                    slides[ index ].index = index + 1
+            else if(direction < 0) {
+                var prev = slides[index - 1]
+                if(prev) {
+                    slides[index - 1] = slide
+                    slides[index] = prev
                 }
             }
 
-            slides.sort(function(a, b) { return  a.index - b.index })
+            $scope.slides = slides.map(function(slide, index) {
+                slide.index = index
+                return slide;
+            });
         }
     }]);
