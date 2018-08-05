@@ -61,7 +61,7 @@ angular.module("umbraco")
             listener();
         });
 
-        $scope.slide = $scope.slides[0]
+        $scope.slide = ''
         
         $scope.toggledSlide = null; 
 
@@ -149,7 +149,6 @@ angular.module("umbraco")
             };
 
             $scope.slides.unshift(slide);
-            $scope.slide = slide;
         }
 
         ////
