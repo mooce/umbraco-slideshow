@@ -10,10 +10,17 @@ $spacing: 5px;
     flex-direction: row;
     max-height: 30rem;
     
-    .mdi { 
-        font-size: 24px;
-        line-height: 24px;
-        position: relative;
+    .btn {
+        span {
+            position: relative; 
+            line-height: 1.65;
+        }
+            
+        .mdi { 
+            font-size: 24px; 
+            top: 3px;
+            position: relative;
+        }
     }
 
     .mooce-preview {
@@ -79,6 +86,30 @@ $spacing: 5px;
         display: flex;
         flex-direction: column;
         overflow: hidden;
+        
+
+        .mooce-no-slides {
+            position: relative;
+            height: 10rem;
+            .mooce-no-image {
+                background: #dcdcdf;
+
+                .mdi {
+                    font-size: 2rem;
+                    top:0;
+                }
+            }
+
+            span {
+                position: absolute;
+                width: 16rem;
+                margin-left: -8rem;
+                text-align: center;
+                margin-top: 4rem;
+                font-size: 1rem;
+                left: 50%;
+            }
+        }
         
         .mooce-slides-menubar {
 

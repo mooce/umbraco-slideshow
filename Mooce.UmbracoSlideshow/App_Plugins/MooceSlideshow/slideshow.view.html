@@ -41,7 +41,13 @@
         </div>
     </div>
     <div class="mooce-slides">
-        <div class="mooce-slides-menubar">
+        <div class="mooce-no-slides" ng-if="slides.length == 0">
+            <button class="btn mooce-no-image" ng-click="slideAdd($event)">
+                <i class="mdi mdi-plus"></i>
+                <span>Click to add a slide to this slideshow</span>
+            </button>
+        </div>
+        <div class="mooce-slides-menubar" ng-if="slides.length > 0">
             <button class="mooce-select-control" ng-click="selectAll($event)">
                 <i class="mdi mdi-checkbox-marked" ng-if="selection.length > 0"></i>
                 <i class="mdi mdi-checkbox-blank-outline" ng-if="selection.length == 0"></i>
@@ -51,10 +57,10 @@
                 <span>Add slide</span>
             </button>   
             <button class="btn mooce-pull-right" ng-if="selection.length > 0" ng-click="deleteSelected($event)">
-                <i class="mdi mdi-delete"></i> Delete {{ selection.length }} slides
+                <i class="mdi mdi-delete"></i> <span>Delete {{ selection.length }} slides</span>
             </button>
         </div>
-        <ul>
+        <ul ng-if="slides.length > 0">
             <li ng-repeat="slide in slides" ng-class="{ 'mooce-selected' : slideIsToggled(slide) }" ng-click="slideToggle($event, slide)"> 
                 
                 <img src="{{ slide.image.url }}" ng-click="selectToggle($event, slide)" ng-if="!selectIsToggled(slide) && slide.image" />
