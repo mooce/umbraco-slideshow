@@ -54,11 +54,10 @@
                 <i class="mdi mdi-checkbox-blank-outline" ng-if="selection.length == 0"></i>
             </button> 
             <button class="btn mooce-pull-right" ng-if="selection.length == 0" ng-click="slideAdd($event)">
-                <i class="mdi mdi-plus"></i>
                 <span>Add slide</span>
             </button>   
-            <button class="btn mooce-pull-right" ng-if="selection.length > 0" ng-click="deleteSelected($event)">
-                <i class="mdi mdi-delete"></i> <span>Delete {{ selection.length }} slides</span>
+            <button class="btn mooce-pull-right mooce-delete-slide" ng-if="selection.length > 0" ng-click="deleteSelected($event)">
+                <span>Delete {{ selection.length }} slides</span>
             </button>
         </div>
         <ul ng-if="slides.length > 0">

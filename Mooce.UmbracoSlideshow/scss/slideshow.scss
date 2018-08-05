@@ -10,17 +10,18 @@ $spacing: 5px;
     flex-direction: row;
     max-height: 35rem;
     
-    .btn {
-        span {
-            position: relative; 
-            line-height: 1.65;
-        }
+    .btn { 
             
         .mdi { 
-            font-size: 24px; 
-            top: 3px;
+            font-size: 24px;  
             position: relative;
         }
+    }
+
+    
+    .mooce-delete-slide { 
+        background: $color-error;
+        color: $color-white; 
     }
 
     .mooce-preview {
@@ -29,9 +30,7 @@ $spacing: 5px;
         min-width: 50%;
 
         .mooce-delete-slide {
-            display: block;
-            background: $color-error;
-            color: $color-white;
+            display: block; 
             width: 100%;
         }
         
@@ -396,9 +395,12 @@ $spacing: 5px;
          max-width: 100%;
      }
      
-     small a {
-         color:$color-dark;
-     }
+     small {
+         margin-left:0.5rem;
+         a {
+         opacity: 0.5;
+        }
+    }
  } 
  
 }
