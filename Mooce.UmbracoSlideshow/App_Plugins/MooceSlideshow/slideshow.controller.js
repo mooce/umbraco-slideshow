@@ -26,7 +26,7 @@ angular.module("umbraco")
             });
 
             slides.sort(function(a,b) {
-                return (a.index - b.index)
+                return (b.index - a.index)
             });
 
             return slides
@@ -43,8 +43,10 @@ angular.module("umbraco")
         }
 
         var listener = $scope.$watch('slides', function() {
+
             // Sanitize the model.value
-            $scope.model.value = sanitize(slides)
+            $scope.model.value = angular.toJson($scope.slides)
+
         }, true);
         
         $scope.$on('$destroy', function() {
@@ -119,11 +121,12 @@ angular.module("umbraco")
         $scope.slideAdd = function($event) {
             $event.preventDefault();
 
-            var index = $scope.slides.length
+            var index = $scope.slides.length ? $scope.slides[0].index : 0
+            var heading = 'Slide ' + $scope.slides.length
             var slide = {
                 index : index,
                 image:'',
-                heading:'Slide ' + index,
+                heading: heading,
                 caption:'',
                 link:''
             };
