@@ -12,7 +12,14 @@ angular.module("umbraco")
             }
 
             slides = slides.filter(function(slide) {
-                return Number.isInteger(slide.index)
+                if(!Number.isInteger(slide.index)) {
+                    return false;
+                }
+                if(!Number.isInteger(slide.duration)) {
+                    return false;
+                }
+
+                return true;
             });
 
             slides = slides.map(function(slide) {
@@ -22,6 +29,7 @@ angular.module("umbraco")
                     heading : slide.heading,
                     caption : slide.caption,
                     link : slide.link,
+                    duration : slide.duration,
                 }
             });
 
@@ -49,12 +57,11 @@ angular.module("umbraco")
 
         }, true);
         
-        $scope.$on('$destroy', function() {
-            console.log('cleaning up..')
+        $scope.$on('$destroy', function() { 
             listener();
         });
 
-        $scope.slide = ''
+        $scope.slide = $scope.slides[0]
         
         $scope.toggledSlide = null; 
 
@@ -105,17 +112,26 @@ angular.module("umbraco")
             for(var i = 0; i < $scope.selection.length; i++) {
                 
                 var slide = $scope.selection[i];
-                var index = $scope.slides.indexOf(slide);
 
-                $scope.slides.splice(index, 1);
-
-                // If slide being deleted currently toggled, untoggle it
-                if(slide === $scope.slide) {
-                    $scope.slide = ''
-                }
+                $scope.slideDelete($event, slide);
             }
 
             $scope.selection = [];
+        }
+
+        $scope.slideDelete = function($event, slide) {
+            
+            $event.preventDefault();
+
+            var index = $scope.slides.indexOf(slide);
+            if(index === -1) return
+
+            $scope.slides.splice(index, 1);
+
+            // If slide being deleted currently toggled, untoggle it
+            if(slide === $scope.slide) {
+                $scope.slide = ''
+            }
         }
 
         $scope.slideAdd = function($event) {
@@ -128,7 +144,8 @@ angular.module("umbraco")
                 image:'',
                 heading: heading,
                 caption:'',
-                link:''
+                link:'',
+                duration:1
             };
 
             $scope.slides.unshift(slide);

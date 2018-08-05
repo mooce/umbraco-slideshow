@@ -8,7 +8,7 @@ $spacing: 5px;
 
     display: flex;
     flex-direction: row;
-    max-height: 30rem;
+    max-height: 35rem;
     
     .btn {
         span {
@@ -27,6 +27,13 @@ $spacing: 5px;
         flex: 1;
         margin-right: 1rem;
         min-width: 50%;
+
+        .mooce-delete-slide {
+            display: block;
+            background: $color-error;
+            color: $color-white;
+            width: 100%;
+        }
         
         .mooce-slide-image {
 
@@ -129,10 +136,14 @@ $spacing: 5px;
                 height: 2rem;
                 padding: 0; 
                 border: none;
+                top: 8px;
+                position: relative;
+                left: 1rem;
+                color:$color-dark;
 
                 .mdi {
                     line-height: 1.25;
-    font-size: 1.5rem;
+                    font-size: 1.5rem;
                 }
             }
 
@@ -180,7 +191,18 @@ $spacing: 5px;
                 }
 
                 &.mooce-selected {
-                    background-color: #35c786;
+                    background-color: #333;
+                    color:$color-white;
+                    
+                    small {
+                        color:$color-white;
+                    }
+                    
+                    .btn, .mooce-slide-no-image, .mooce-slide-selected {
+                        background: #222;
+                        color:$color-white;
+                    }
+
                 }
                 
                 small {
@@ -199,7 +221,7 @@ $spacing: 5px;
                     height:3rem;
                     border-radius: 1.5rem;
                     object-fit: cover;
-                    background: $color-grey;
+                    background: #e2e2e5;
                     
                     .mdi {
                         font-size: 1.5rem;
@@ -212,9 +234,8 @@ $spacing: 5px;
 
                 .mooce-slide-selected {
                     border: none;
-                    background: #675d79;
+                    background: #e2e2e5;
                     .mdi {
-                        color:$color-white;
                         left:0;
                         top:0.8rem;
                     }
@@ -375,11 +396,9 @@ $spacing: 5px;
          max-width: 100%;
      }
      
-     .mooce-actions {
-        position: absolute;
-        right: 1.5rem;
-        top: 2rem;
-     } 
+     small a {
+         color:$color-dark;
+     }
  } 
  
 }

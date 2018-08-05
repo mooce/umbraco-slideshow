@@ -26,18 +26,19 @@
         <div class="mooce-3-1-fields clearfix">
             <div class="mooce-editable-field mooce-slide-link">
                 <label>Link</label>
-                <a href="{{ slide.link.url }}"   class="btn" ng-click="pickLink($event, slide)" ng-if="slide.link">{{ slide.link.name }}</a>
-                <span class="mooce-actions" ng-if="slide.link">
-                    <button class="btn" ng-click="clearLink($event, slide)">
-                        <i class="mdi mdi-delete"></i>
-                    </button>                    
-                </span>
+                <a href="{{ slide.link.url }}" class="btn" ng-click="pickLink($event, slide)" ng-if="slide.link">{{ slide.link.name }}</a>
+                <small ng-if="slide.link">
+                    <a href="#" ng-click="clearLink($event, slide)">Clear</a>
+                </small>
                 <button class="btn" ng-if="!slide.link" ng-click="pickLink($event, slide)">Pick Content</button>
             </div>
             <div class="mooce-editable-field">
                 <label>Slide duration</label>
-                <input ng-model="slideDuration" ng-change="onChangeSlideDuration()" type="number" min="1" />
+                <input ng-model="slide.duration" ng-change="onChangeSlideDuration()" type="number" min="1" />
             </div>
+        </div>
+        <div class="mooce-editable-field">
+            <button class="btn mooce-delete-slide" ng-click="slideDelete($event, slide)">Delete slide</button>
         </div>
     </div>
     <div class="mooce-slides">
